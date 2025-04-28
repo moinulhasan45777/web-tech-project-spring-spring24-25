@@ -1,0 +1,187 @@
+main {
+  display: grid;
+  grid-template-columns: 25rem 1fr 28rem;
+  min-height: 100vh;
+}
+
+#left-pane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #1c7340;
+  height: 100%;
+}
+
+#specialty {
+  font-size: 1.7rem;
+  letter-spacing: 0.05rem;
+  margin-top: 3rem;
+  color: #1c7340;
+}
+
+#main-pane {
+  height: 100%;
+  margin: 5rem 5rem;
+  margin-top: 2rem;
+}
+
+#search-bar {
+  margin-bottom: 2rem;
+  border: none;
+  box-shadow: inset 0 0 2px #000;
+  width: 100%;
+  height: 5rem;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  font-size: 1.7rem;
+  letter-spacing: 0.05rem;
+}
+
+#search-bar:focus {
+  outline: none;
+  box-shadow: inset 0 0 6px #1c7340;
+}
+
+#specialty-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.specialty-container {
+  position: relative;
+  width: 100%;
+  height: 30rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.specialty-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgb(0, 0, 0);
+}
+
+.specialty-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1));
+  transition: all 0.5s ease-in-out;
+}
+
+.specialty-heading {
+  position: absolute;
+  top: 75%;
+  left: 8%;
+  font-size: 2.5rem;
+  color: #26d770;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
+
+.specialty-description {
+  position: absolute;
+  top: 85%;
+  left: 8%;
+  font-size: 1.5rem;
+  color: #e7fff1;
+  letter-spacing: 0.05rem;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+#right-pane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 1px solid #1c7340;
+  height: 100%;
+}
+
+.pane-heading {
+  font-size: 2.2rem;
+  color: #1c7340;
+  letter-spacing: 0.05rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #1c7340;
+}
+
+#right-pane .overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.7)
+  );
+}
+
+.doctor-container {
+  position: relative;
+  width: 20rem;
+  height: 25rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.doctor-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+.doctor-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doctor-name {
+  font-size: 1.5rem;
+  color: #e7fff1;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
+
+.doctor-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  left: 7%;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 1.1rem;
+  padding-right: 2rem;
+}
+
+.doctor-specialty {
+  font-size: 1.5rem;
+  color: #e7fff1;
+  letter-spacing: 0.05rem;
+  opacity: 0.8;
+  font-weight: 300;
+  margin-bottom: 0.8rem;
+}
+
+.doctor-degree {
+  font-size: 1rem;
+  color: #e7fff1;
+  letter-spacing: 0.05rem;
+  opacity: 0.8;
+  font-weight: 300;
+}
