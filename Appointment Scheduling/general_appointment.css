@@ -50,7 +50,7 @@ button {
 }
 
 /****************************************************************/
-/*************************** MAIN PANE **************************/
+/*********************** MAIN PANE General **********************/
 /****************************************************************/
 
 #search-bar {
@@ -68,6 +68,124 @@ button {
 #search-bar:focus {
   outline: none;
   box-shadow: inset 0 0 6px #1c7340;
+}
+
+/****************************************************************/
+/*********************** MAIN PANE Specialty ********************/
+/****************************************************************/
+#specialty-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.specialty-container {
+  position: relative;
+  width: 100%;
+  height: 30rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.specialty-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgb(0, 0, 0);
+}
+
+.specialty-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.specialty-heading {
+  position: absolute;
+  top: 75%;
+  left: 8%;
+  font-size: 2.5rem;
+  color: #26d770;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
+
+.specialty-description {
+  position: absolute;
+  top: 85%;
+  left: 8%;
+  font-size: 1.5rem;
+  color: #e7fff1;
+  letter-spacing: 0.05rem;
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+/****************************************************************/
+/************************ MAIN PANE Doctor **********************/
+/****************************************************************/
+#doctor-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+}
+
+.main-doctor-container {
+  position: relative;
+  width: 100%;
+  height: 30rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.main-doctor-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgb(0, 0, 0);
+}
+
+/****************************************************************/
+/*********************** MAIN PANE Schedule *********************/
+/****************************************************************/
+/* TODO TODO TODO  */
+#schedule-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 3rem;
+}
+
+.schedule-container {
+  position: relative;
+  width: 100%;
+  height: 15rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.schedule-heading {
+  position: absolute;
+  top: 65%;
+  left: 8%;
+  font-size: 2rem;
+  color: #26d770;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+}
+
+.schedule-description {
+  position: absolute;
+  top: 75%;
+  left: 8%;
+  font-size: 1.5rem;
+  color: #e7fff1;
+  letter-spacing: 0.05rem;
+  opacity: 0.8;
+  font-weight: 300;
 }
 /****************************************************************/
 /************************** RIGHT PANE **************************/

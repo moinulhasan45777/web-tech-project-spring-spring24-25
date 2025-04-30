@@ -6,7 +6,12 @@
     <title>Personal Profile</title>
   </head>
   <body>
-    <form method="post" action="#" enctype="" id="edit-profile">
+    <form
+      method="post"
+      action="validate.php"
+      enctype="multipart/form-data"
+      id="edit-profile"
+    >
       <fieldset>
         <legend>Edit Profile</legend>
         <table>
@@ -24,7 +29,18 @@
           </tr>
           <tr>
             <td><label for="blood-group">Blood Group:</label></td>
-            <td><input type="text" id="blood-group" name="blood-group" /></td>
+            <td>
+              <select id="bgroud" name="blood-group">
+                <option selected="selected">Select Blood Group</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>O+</option>
+                <option>O-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+              </select>
+            </td>
           </tr>
           <tr>
             <td><label for="dob">Date of Birth:</label></td>
@@ -76,11 +92,18 @@
           </tr>
           <tr>
             <td>&nbsp;</td>
-            <td><input type="button" id="submit-button" value="Save" /></td>
+            <td>
+              <input
+                type="submit"
+                id="submit-button"
+                value="Save"
+                name="submit-button"
+              />
+            </td>
           </tr>
         </table>
       </fieldset>
     </form>
-    <script src="edit-profile.js"></script>
+    <!-- <script src="edit-profile.js"></script> -->
   </body>
 </html>
