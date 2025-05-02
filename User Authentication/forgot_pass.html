@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../general.css" />
-    <link rel="stylesheet" href="general_appointment.css" />
+    <link rel="stylesheet" href="user_authentication.css" />
 
     <title>HMC - Your most reliable companion</title>
   </head>
@@ -20,11 +20,9 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="#">Doctors</a></li>
             <li><a href="#">About</a></li>
-            <li class="active"><a href="#">Book Appointment</a></li>
+            <li><a href="#">Book Appointment</a></li>
+            <li id="login" class="active"><a href="#">Sign in</a></li>
           </ul>
-          <a href="#"
-            ><img id="pro-pic" src="../Images/sample-pro-pic.JPG"
-          /></a>
         </div>
       </nav>
     </header>
@@ -33,198 +31,21 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main>
-      <section id="left-pane">
-        <p id="specialty" class="left-pane-text">&#x2022; Select Specialty</p>
-        <p id="doctor" class="left-pane-text">&#x2022; Select Doctor</p>
-        <p id="schedule" class="left-pane-text active-text">
-          &#x2022; Pick date
-        </p>
-      </section>
-      <section id="main-pane-schedule">
-        <ul id="schedule-list">
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture"
-              />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture"
-              />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture"
-              />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture"
-              />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture"
-              />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture"
-              />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture"
-              />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture"
-              />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture"
-              />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture"
-              />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-        </ul>
-      </section>
-      <section id="right-pane">
-        <h2 class="pane-heading">Leading Doctors</h2>
-        <button type="button">
-          <div class="doctor-container">
-            <div class="overlay"></div>
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 1.jpg"
-              alt="Doctor 1"
-              class="doctor-picture"
-            />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Md Shah Newaz</h2>
-              <p class="doctor-specialty">Neurosurgery</p>
-              <p class="doctor-degree">
-                MBBS, BCS (Health), MS (Neurosurgery, BSMMU)
-              </p>
-            </div>
-          </div>
-        </button>
-        <button type="button">
-          <div class="doctor-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture"
-            />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </div>
-        </button>
-
-        <button type="button">
-          <div class="doctor-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 3.jpg"
-              alt="Doctor 3"
-              class="doctor-picture"
-            />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Prof. Dr. Md. Merajul Islam (Miraj)</h2>
-              <p class="doctor-specialty">Urology</p>
-              <p class="doctor-degree">
-                MBBS, MCPS (Surgery), MS (Urology), FACS (USA)
-              </p>
-            </div>
-          </div>
-        </button>
-
-        <!-- TODO TODO TODO TODO TODO-->
-        <!-- Add one more doctor card -->
-      </section>
+    <main id="login-main">
+      <img id="login-logo" src="../Logo/main-logo-without-text.png" />
+      <form id="user-auth" method="post" action="" enctype="" novalidate>
+        <div class="input-container">
+          <label for="user-email">Enter your email</label>
+          <input
+            type="email"
+            id="user-email"
+            class="text-field"
+            name="user-email"
+            placeholder="john@example.com"
+          />
+        </div>
+        <input type="submit" name="sign-in" id="button-main" value="Proceed" />
+      </form>
     </main>
 
     <!-------------------------------------------------------------------------------------->

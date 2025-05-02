@@ -1,0 +1,110 @@
+form {
+  min-width: 35rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: #eff5f2;
+  padding: 5rem;
+  margin-bottom: 2rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+label {
+  padding-left: 0.1rem;
+  font-size: 1.3rem;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
+
+.text-field {
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding-left: 0.7rem;
+}
+
+.text-field:focus {
+  outline: 2px solid #1c7340;
+}
+
+#label-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+/******************************************/
+/****************** LOGIN *****************/
+/******************************************/
+#login-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+#login-logo {
+  height: 8rem;
+  margin-bottom: 5rem;
+}
+
+#sign-up-text,
+#sign-up-text a {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 1.4rem;
+}
+
+#button-main {
+  border: none;
+  background-color: #1c7340;
+  color: white;
+  font-size: 1.5rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+#button-main:hover {
+  cursor: pointer;
+  background-color: #052b15;
+}
+
+/******************************************/
+/***************** Sign Up ****************/
+/******************************************/
+#signup-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+#heading {
+  color: #1c7340;
+  margin: 2rem 0;
+  font-size: 2.5rem;
+}
+
+#user-auth-register {
+  min-width: 50rem;
+}

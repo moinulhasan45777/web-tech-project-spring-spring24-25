@@ -131,6 +131,12 @@ button {
   gap: 3rem;
 }
 
+.doctor-schedule {
+  font-size: 1.35rem;
+  padding-bottom: 0.4rem;
+  color: blue;
+}
+
 .main-doctor-container {
   position: relative;
   width: 100%;
@@ -167,6 +173,11 @@ button {
   transition: all 0.3s ease-in-out;
 }
 
+.schedule-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
 .schedule-heading {
   position: absolute;
   top: 65%;
@@ -177,9 +188,9 @@ button {
   font-weight: 600;
 }
 
-.schedule-description {
+.schedule-date {
   position: absolute;
-  top: 75%;
+  top: 82%;
   left: 8%;
   font-size: 1.5rem;
   color: #e7fff1;
