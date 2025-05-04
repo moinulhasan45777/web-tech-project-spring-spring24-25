@@ -30,15 +30,25 @@ input[type="number"] {
   appearance: textfield;
 }
 
-.text-field {
+.text-field,
+.text-area {
   height: 3rem;
   border-radius: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.3);
   padding-left: 0.7rem;
 }
 
-.text-field:focus {
+.text-field:focus,
+.text-area:focus {
   outline: 2px solid #1c7340;
+}
+
+.text-area {
+  height: 5rem;
+  resize: none;
+  text-indent: 0;
+  overflow: hidden;
+  font-size: 1.5rem;
 }
 
 #label-container {
@@ -100,11 +110,41 @@ a {
 }
 
 #heading {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   color: #1c7340;
   margin: 2rem 0;
   font-size: 2.5rem;
 }
 
-#user-auth-register {
+#user-registration-form {
   min-width: 50rem;
+}
+
+#signature-canvas {
+  width: 100%;
+  height: 15rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  display: block;
+  touch-action: none;
+  background-color: white;
+}
+
+#clear-canvas {
+  width: 5rem;
+  padding: 0.5rem 0;
+  border: none;
+  background-color: #afafaf;
+  width: 5rem;
+  align-self: flex-end;
+}
+
+#clear-canvas:hover {
+  cursor: pointer;
+  background-color: #7f7f7f;
+}
+
+#terms:focus {
+  outline: 1px solid #1c7340;
 }
