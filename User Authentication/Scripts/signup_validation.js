@@ -10,37 +10,66 @@ const submitButton = document.getElementById("button-main");
 // ----------------Realtime Input Validation----------------
 // ---------------------------------------------------------
 
+let previousValueName = "";
+
 // User Full Name Validation
 fullName.addEventListener("input", function (e) {
-  let lastIndex = fullName.value.length - 1;
+  let lastInputIndex = -1;
 
-  if (
-    (fullName.value[lastIndex] < "a" || fullName.value[lastIndex] > "z") &&
-    (fullName.value[lastIndex] < "A" || fullName.value[lastIndex] > "Z") &&
-    fullName.value[lastIndex] != " " &&
-    fullName.value[lastIndex] != "." &&
-    fullName.value[lastIndex] != "-"
-  ) {
-    fullName.value = fullName.value.slice(0, -1);
-  }
-});
-
-// User Mobile-number Validation
-let previousValue = "";
-phone.addEventListener("input", function (e) {
-  let lastInputIndex = 15;
-
-  if (previousValue == "") {
+  if (previousValueName == "") {
     lastInputIndex = 0;
   } else {
-    for (let i = 0; i < previousValue.length - 1; i++) {
-      if (phone.value[i] != previousValue[i]) {
+    for (let i = 0; i < previousValueName.length - 1; i++) {
+      if (fullName.value[i] != previousValueName[i]) {
         lastInputIndex = i;
         break;
       }
     }
 
-    if (lastInputIndex == 15) {
+    if (lastInputIndex == -1) {
+      lastInputIndex = fullName.value.length - 1;
+    }
+  }
+
+  if (
+    (fullName.value[lastInputIndex] < "a" ||
+      fullName.value[lastInputIndex] > "z") &&
+    (fullName.value[lastInputIndex] < "A" ||
+      fullName.value[lastInputIndex] > "Z") &&
+    fullName.value[lastInputIndex] != " " &&
+    fullName.value[lastInputIndex] != "." &&
+    fullName.value[lastInputIndex] != "-"
+  ) {
+    if (previousValueName == "") {
+      fullName.value = "";
+    } else if (lastInputIndex == fullName.value.length - 1) {
+      fullName.value = fullName.value.slice(0, -1);
+    } else {
+      fullName.value =
+        fullName.value.slice(0, lastInputIndex) +
+        fullName.value.slice(lastInputIndex + 1);
+    }
+  }
+
+  previousValueName = fullName.value;
+});
+
+// User Mobile-number Validation
+let previousValueMobile = "";
+phone.addEventListener("input", function (e) {
+  let lastInputIndex = -1;
+
+  if (previousValueMobile == "") {
+    lastInputIndex = 0;
+  } else {
+    for (let i = 0; i < previousValueMobile.length - 1; i++) {
+      if (phone.value[i] != previousValueMobile[i]) {
+        lastInputIndex = i;
+        break;
+      }
+    }
+
+    if (lastInputIndex == -1) {
       lastInputIndex = phone.value.length - 1;
     }
   }
@@ -52,7 +81,7 @@ phone.addEventListener("input", function (e) {
     (phone.value[0] == "+" && phone.value.length > 14) ||
     (phone.value[0] != "+" && phone.value.length > 11)
   ) {
-    if (previousValue == "") {
+    if (previousValueMobile == "") {
       phone.value = "";
     } else if (lastInputIndex == phone.value.length - 1) {
       phone.value = phone.value.slice(0, -1);
@@ -70,7 +99,7 @@ phone.addEventListener("input", function (e) {
         phone.value.slice(lastInputIndex + 1);
     }
   } else if (
-    previousValue != "" &&
+    previousValueMobile != "" &&
     phone.value[lastInputIndex] == "+" &&
     phone.value[0] == "+" &&
     phone.value.slice(1).includes("+")
@@ -78,7 +107,7 @@ phone.addEventListener("input", function (e) {
     phone.value = phone.value.slice(1);
   }
 
-  previousValue = phone.value;
+  previousValueMobile = phone.value;
 });
 
 // Digital Signature

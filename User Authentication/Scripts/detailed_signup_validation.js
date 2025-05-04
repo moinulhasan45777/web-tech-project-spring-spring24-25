@@ -13,15 +13,15 @@ const submitButton = document.getElementById("button-main");
 // ---------------------------------------------------------
 
 // User Emergency Mobile-number Validation
-let previousValue = "";
+let Mobile = "";
 emPhone.addEventListener("input", function (e) {
   let lastInputIndex = 15;
 
-  if (previousValue == "") {
+  if (previousValueMobile == "") {
     lastInputIndex = 0;
   } else {
-    for (let i = 0; i < previousValue.length - 1; i++) {
-      if (emPhone.value[i] != previousValue[i]) {
+    for (let i = 0; i < previousValueMobile.length - 1; i++) {
+      if (emPhone.value[i] != previousValueMobile[i]) {
         lastInputIndex = i;
         break;
       }
@@ -47,7 +47,7 @@ emPhone.addEventListener("input", function (e) {
       emPhone.value.slice(0, lastInputIndex) +
       emPhone.value.slice(lastInputIndex + 1);
   } else if (
-    previousValue != "" &&
+    previousValueMobile != "" &&
     emPhone.value[lastInputIndex] == "+" &&
     emPhone.value[0] == "+" &&
     emPhone.value.slice(1).includes("+")
@@ -55,7 +55,7 @@ emPhone.addEventListener("input", function (e) {
     emPhone.value = emPhone.value.slice(1);
   }
 
-  previousValue = emPhone.value;
+  previousValueMobile = emPhone.value;
 });
 
 // Date

@@ -63,7 +63,7 @@ nav {
 #nav-list li a:visited {
   text-decoration: none;
   color: #000;
-  font-size: 2.2rem;
+  font-size: 2rem;
   transition: all 0.1s ease-in-out;
 }
 
@@ -147,7 +147,7 @@ footer {
 }
 
 .footer-heading {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   letter-spacing: 0.1rem;
   margin-bottom: 2rem;
 }
@@ -158,14 +158,9 @@ footer {
   fill: #fff;
 }
 
-.footer-info-text {
-  font-size: 1.4rem;
-  line-height: 2rem;
-  letter-spacing: 0.05rem;
-}
-
+.footer-info-text,
 .footer-info-text-nonhover {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   line-height: 2rem;
   letter-spacing: 0.05rem;
 }
