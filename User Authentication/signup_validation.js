@@ -26,20 +26,59 @@ fullName.addEventListener("input", function (e) {
 });
 
 // User Mobile-number Validation
+let previousValue = "";
 phone.addEventListener("input", function (e) {
+  let lastInputIndex = 15;
+
+  if (previousValue == "") {
+    lastInputIndex = 0;
+  } else {
+    for (let i = 0; i < previousValue.length - 1; i++) {
+      if (phone.value[i] != previousValue[i]) {
+        lastInputIndex = i;
+        break;
+      }
+    }
+
+    if (lastInputIndex == 15) {
+      lastInputIndex = phone.value.length - 1;
+    }
+  }
+
   if (
-    phone.value.substring(1).includes("+") ||
+    (phone.value[lastInputIndex] !== "+" &&
+      (phone.value[lastInputIndex] < "0" ||
+        phone.value[lastInputIndex] > "9")) ||
     (phone.value[0] == "+" && phone.value.length > 14) ||
     (phone.value[0] != "+" && phone.value.length > 11)
   ) {
-    phone.value = phone.value.slice(0, -1);
+    if (previousValue == "") {
+      phone.value = "";
+    } else if (lastInputIndex == phone.value.length - 1) {
+      phone.value = phone.value.slice(0, -1);
+    } else {
+      phone.value =
+        phone.value.slice(0, lastInputIndex) +
+        phone.value.slice(lastInputIndex + 1);
+    }
+  } else if (lastInputIndex != 0 && phone.value[lastInputIndex] == "+") {
+    if (lastInputIndex == phone.value.length - 1) {
+      phone.value = phone.value.slice(0, -1);
+    } else {
+      phone.value =
+        phone.value.slice(0, lastInputIndex) +
+        phone.value.slice(lastInputIndex + 1);
+    }
   } else if (
-    (phone.value[phone.value.length - 1] < "0" ||
-      phone.value[phone.value.length - 1] > "9") &&
-    phone.value[phone.value.length - 1] != "+"
+    previousValue != "" &&
+    phone.value[lastInputIndex] == "+" &&
+    phone.value[0] == "+" &&
+    phone.value.slice(1).includes("+")
   ) {
-    phone.value = phone.value.slice(0, -1);
+    phone.value = phone.value.slice(1);
   }
+
+  previousValue = phone.value;
 });
 
 // Digital Signature
@@ -129,6 +168,7 @@ submitButton.addEventListener("click", function (e) {
   e.preventDefault();
 
   // User Full Name Validation
+  fullName.value = fullName.value.trim();
   if (fullName.value.length < 3) {
     alert("Please enter a valid name.");
     fullName.focus();
@@ -145,6 +185,8 @@ submitButton.addEventListener("click", function (e) {
     return;
   }
 
+  // User Email Validation
+  email.value = email.value.trim();
   let count = 0;
   for (let i = 0; i < email.value.length; i++) {
     if (email.value[i] == "@") {
@@ -154,7 +196,7 @@ submitButton.addEventListener("click", function (e) {
 
   const atIndex = email.value.indexOf("@");
   const dotIndex = email.value.lastIndexOf(".");
-  // User Email Validation
+
   if (
     atIndex < 1 ||
     dotIndex <= atIndex + 1 ||
@@ -164,6 +206,14 @@ submitButton.addEventListener("click", function (e) {
     alert("Please enter a valid email address.");
     email.focus();
     return;
+  }
+
+  for (let i = atIndex + 1; i < dotIndex; i++) {
+    if (email.value[i] == ".") {
+      alert("Please enter a valid email address.");
+      email.focus();
+      return;
+    }
   }
 
   // User Password Validation
