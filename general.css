@@ -167,7 +167,7 @@ footer {
 
 #footer-copyright {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 0.56fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 0.15fr;
   padding-bottom: 4rem;
   margin-top: 3rem;
   color: #ffffff;
