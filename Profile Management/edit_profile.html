@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../general.css" />
-    <link rel="stylesheet" href="user_authentication.css" />
+    <link rel="stylesheet" href="profile_management.css" />
 
     <title>HMC - Your most reliable companion</title>
   </head>
@@ -20,9 +20,11 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="#">Doctors</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Book Appointment</a></li>
-            <li id="login" class="active"><a href="#">Sign in</a></li>
+            <li class="active"><a href="#">Book Appointment</a></li>
           </ul>
+          <a href="#"
+            ><img id="pro-pic" src="../Images/sample-pro-pic.JPG"
+          /></a>
         </div>
       </nav>
     </header>
@@ -31,14 +33,55 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main id="signup-main">
-      <h1 id="heading">Additional Info</h1>
+    <main id="edit-profile-main">
+      <h1 id="heading">Edit Profile</h1>
       <form
-        id="user-registration-form"
+        id="edit-profile-form"
         method="post"
         action=""
         enctype=""
         novalidate>
+        <div class="input-container pro-pic-container">
+          <label>Profile Picture</label>
+          <img
+            id="profile-picture"
+            src="../Images/sample-pro-pic.JPG"
+            alt="Profile Picture" />
+          <input
+            type="file"
+            class="change-avatar-input"
+            name="change-avatar-input"
+            id="change-avatar-input" />
+          <input
+            type="button"
+            id="change-avatar"
+            class="small-button"
+            value="Upload" />
+        </div>
+        <div class="input-container">
+          <label for="user-name">Full Name</label>
+          <input
+            type="text"
+            class="text-field"
+            id="user-name"
+            name="user-name" />
+        </div>
+        <div class="input-container">
+          <label for="user-phone">Mobile</label>
+          <input
+            type="text"
+            class="text-field"
+            id="user-phone"
+            name="user-phone" />
+        </div>
+        <div class="input-container">
+          <label for="user-email">Email</label>
+          <input
+            type="email"
+            id="user-email"
+            class="text-field"
+            name="user-email" />
+        </div>
         <div class="input-container">
           <label for="user-blood-group">Blood Group</label>
           <select
@@ -75,6 +118,14 @@
             class="text-field"
             id="user-city"
             name="user-city" />
+        </div>
+        <div class="input-container pro-pic-container">
+          <label>Digital Signature</label>
+          <img
+            id="digital-signature"
+            src="../Images/Profile Management/Sample Signature.png"
+            alt="Digital Signature" />
+          <a class="small-button" href="change_signature.html">Change</a>
         </div>
         <div class="input-container">
           <label for="user-em-name">Emergency Contact Name</label>
@@ -392,7 +443,7 @@
       </section>
     </footer>
 
-    <script src="Scripts/detailed_signup_validation.js"></script>
+    <script src="Scripts/edit_profile_validation.js"></script>
   </body>
 </html>
 a

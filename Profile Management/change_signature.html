@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../general.css" />
-    <link rel="stylesheet" href="user_authentication.css" />
+    <link rel="stylesheet" href="profile_management.css" />
 
     <title>HMC - Your most reliable companion</title>
   </head>
@@ -31,77 +31,29 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main id="signup-main">
-      <h1 id="heading">Additional Info</h1>
+    <main id="change-signature-main">
+      <h1 id="heading">Digital Signature</h1>
       <form
-        id="user-registration-form"
+        id="change-signature-form"
         method="post"
         action=""
         enctype=""
         novalidate>
         <div class="input-container">
-          <label for="user-blood-group">Blood Group</label>
-          <select
-            class="text-field"
-            id="user-blood-group"
-            name="user-blood-group">
-            <option value="">Select</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-            <option value="Unknown">Unknown</option>
-          </select>
-        </div>
-        <div class="input-container">
-          <label for="user-dob">Date of Birth</label>
-          <input type="date" class="text-field" id="user-dob" name="user-dob" />
-        </div>
-        <div class="input-container">
-          <label for="user-address">Present Address</label>
-          <textarea
-            id="user-address"
-            class="text-area"
-            name="user-address"></textarea>
-        </div>
-        <div class="input-container">
-          <label for="user-city">City</label>
+          <label for="digital-signature">Digital Signature</label>
+          <canvas id="signature-canvas"></canvas>
           <input
-            type="text"
-            class="text-field"
-            id="user-city"
-            name="user-city" />
-        </div>
-        <div class="input-container">
-          <label for="user-em-name">Emergency Contact Name</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-em-name"
-            name="user-em-name" />
-        </div>
-        <div class="input-container">
-          <label for="user-em-relation">Emergency Contact Relation</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-em-relation"
-            name="user-em-relation" />
-        </div>
-        <div class="input-container">
-          <label for="user-em-phone">Emergency Contact Number</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-em-phone"
-            name="user-em-phone" />
+            type="hidden"
+            name="digital-signature"
+            id="digital-signature" />
+          <input type="button" id="clear-canvas" value="Clear" />
         </div>
 
-        <input type="submit" name="button-main" id="button-main" value="Save" />
+        <input
+          type="submit"
+          name="button-main"
+          id="button-main"
+          value="Change" />
       </form>
     </main>
 
@@ -392,7 +344,6 @@
       </section>
     </footer>
 
-    <script src="Scripts/detailed_signup_validation.js"></script>
+    <script src="Scripts/change_signature_validation.js"></script>
   </body>
 </html>
-a
