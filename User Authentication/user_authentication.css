@@ -29,6 +29,11 @@ label {
   font-size: 1.3rem;
 }
 
+.label-heading {
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem !important;
+}
+
 input::-webkit-inner-spin-button,
 input::-webkit-outer-spin-button {
   appearance: none;
@@ -86,7 +91,7 @@ a {
 }
 
 /******************************************/
-/****************** LOGIN *****************/
+/* LOGIN */
 /******************************************/
 #login-main {
   display: flex;
@@ -108,7 +113,7 @@ a {
 }
 
 /******************************************/
-/***************** Sign Up ****************/
+/* Sign Up */
 /******************************************/
 #signup-main {
   display: flex;
@@ -148,4 +153,26 @@ a {
 
 #terms:focus {
   outline: 1px solid #1c7340;
+}
+
+/******************************************/
+/* Medical History */
+/******************************************/
+.medical-history-heading {
+  margin-bottom: 0.5rem;
+}
+
+.activity-level-container,
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+#patient-medical-history-others,
+#family-medical-history-others {
+  margin-left: 2rem;
+  height: 2rem;
+  width: 30rem;
 }
