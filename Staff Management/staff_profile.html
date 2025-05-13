@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../general.css" />
+    <link rel="stylesheet" href="staff_management.css" />
 
     <title>HMC - Your most reliable companion</title>
   </head>
@@ -14,13 +15,21 @@
     <header>
       <nav>
         <img src="../Logo/nav-logo.png" alt="logo" id="logo" />
-        <ul id="nav-list">
-          <li id="active"><a href="index.html">Home</a></li>
-          <li><a href="#">Doctors</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Manage Stuff</a></li>
-          <li id="login"><a href="#">Sign in</a></li>
-        </ul>
+        <div id="nav-link-container">
+          <ul id="nav-list">
+            <li><a href="../Landing Page/index.html">Home</a></li>
+            <li><a href="../Doctor Profiles/doctors_list.html">Doctors</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+              <a href="../Appointment Scheduling/select_specialty.html"
+                >Book Appointment</a
+              >
+            </li>
+          </ul>
+          <a href="../Profile Management/view_profile.html"
+            ><img id="pro-pic" src="../Images/sample-pro-pic.JPG"
+          /></a>
+        </div>
       </nav>
     </header>
 
@@ -28,7 +37,123 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main></main>
+    <main id="view-profile-main">
+      <h1 id="heading">Profile</h1>
+      <div id="info-container-view">
+        <div class="input-container pro-pic-container">
+          <label class="info-label">Profile Picture</label>
+          <img
+            id="profile-picture"
+            src="../Images/Staffs/Nurse/nurse 1.jpg"
+            alt="Profile Picture"
+          />
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-name">Name: </label>
+          <p class="info-field" id="user-name" name="user-name">Moinul Hasan</p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-phone">Mobile: </label>
+          <p class="info-field" id="user-phone" name="user-phone">
+            01746670010
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-email">Email: </label>
+          <p class="info-field" id="user-email" name="user-email">
+            moinulhasan45777@gmail.com
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="staff-department">Department: </label>
+          <p class="info-field" id="staff-department" name="staff-department">
+            Cardiology
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="staff-designation"
+            >Designation:
+          </label>
+          <p class="info-field" id="staff-designation" name="staff-designation">
+            Nurse
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="staff-schedule">Schedule: </label>
+          <p class="info-field" id="staff-schedule" name="staff-schedule">
+            Morning
+          </p>
+          <a class="small-button update-button" href="">Change</a>
+        </div>
+
+        <div class="input-container-view">
+          <label class="info-label" for="license-expiration-date"
+            >License Expiration Date:
+          </label>
+          <p
+            class="info-field"
+            id="license-expiration-date"
+            name="license-expiration-date"
+          >
+            12/5/2027
+          </p>
+        </div>
+
+        <div class="input-container pro-pic-container">
+          <label class="info-label">Digital Signature:</label>
+          <img
+            id="digital-signature"
+            src="../Images/Profile Management/Sample Signature.png"
+            alt="Digital Signature"
+          />
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-blood-group">Blood Group: </label>
+          <p class="info-field" id="user-blood-group" name="user-blood-group">
+            A+
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-dob">Date of Birth:</label>
+          <p class="info-field" id="user-dob" name="user-dob">23/5/2000</p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-address">Present Address:</label>
+          <p id="user-address" class="info-field" name="user-address">
+            House-10, Lane-3, Mirpur-10, Dhaka-1216
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-city">City:</label>
+          <p class="info-field" id="user-city" name="user-city">Dhaka</p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-em-name"
+            >Emergency Contact Name:</label
+          >
+          <p class="info-field" id="user-em-name" name="user-em-name">
+            Harun Or Rashid
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-em-relation"
+            >Emergency Contact Relation:</label
+          >
+          <p class="info-field" id="user-em-relation" name="user-em-relation">
+            Biological Father
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-em-phone"
+            >Emergency Contact Number:</label
+          >
+          <p class="info-field" id="user-em-phone" name="user-em-phone">
+            +8801715475440
+          </p>
+        </div>
+        <a href="edit_profile.html" class="link-button">Save</a>
+      </div>
+    </main>
 
     <!-------------------------------------------------------------------------------------->
     <!-------------------------------------- GENERAL --------------------------------------->
@@ -52,7 +177,7 @@
                 />
               </g>
             </svg>
-            <p class="footer-info-text">
+            <p class="footer-info-text-nonhover">
               408/1 (Old KA 66/1) <br />
               Kuratoli, Khilkhet <br />
               Dhaka 1229
@@ -105,7 +230,7 @@
                 />
               </g>
             </svg>
-            <p class="footer-info-text">
+            <p class="footer-info-text-nonhover">
               123, Block F <br />
               Plot 23#B <br />
               Bashundhara, Dhaka 1229
@@ -171,7 +296,7 @@
                 />
               </g>
             </svg>
-            <p class="footer-info-text">
+            <p class="footer-info-text-nonhover">
               Suvastu Zenim Plaza <br />
               House 312, Road 16 <br />
               Dhanmondi R/A, Dhaka 1205
@@ -237,7 +362,7 @@
                 />
               </g>
             </svg>
-            <p class="footer-info-text">
+            <p class="footer-info-text-nonhover">
               Ahmed Plaza, Plot 6, Road 2 <br />
               Sector 3, Uttara Model Town <br />
               Dhaka 1230
@@ -303,7 +428,7 @@
                 />
               </g>
             </svg>
-            <p class="footer-info-text">
+            <p class="footer-info-text-nonhover">
               Plot 1, Road 5 <br />
               Block A, Section 10 <br />
               Mirpur, Dhaka 1216
@@ -359,5 +484,8 @@
         <p id="copyright-text">Copyright &copy; 2025 Heritage Medical Center</p>
       </section>
     </footer>
+
+    <script src="Scripts/detailed_signup_validation.js"></script>
   </body>
 </html>
+a
