@@ -1,0 +1,248 @@
+/*******************************************/
+/* General */
+/*******************************************/
+
+#invoice-main {
+  margin: 0 20%;
+  background-color: #fff;
+  padding: 10rem 8rem;
+}
+
+#invoice-heading-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#company-info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 20rem;
+}
+
+#company-logo {
+  height: 8rem;
+  width: 8rem;
+}
+#company-address {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.6rem;
+}
+
+#invoice-heading-number-date-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#heading {
+  align-self: flex-end;
+  font-size: 8rem;
+}
+
+#number-date-container {
+  padding: 1rem;
+  background-color: bisque;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  text-align: right;
+  font-size: 1.5rem;
+}
+
+.invoice-number-date-text {
+  font-size: 1.5rem;
+}
+
+.secondary-heading {
+  margin-top: 4rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+#patient-information {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+}
+
+#patient-name {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.table {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #eaeaea;
+}
+td {
+  padding-left: 4rem;
+}
+
+label {
+  font-size: 1.5rem;
+}
+
+.text-field {
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding-left: 0.7rem;
+}
+
+.text-field:focus {
+  outline: 2px solid #1c7340;
+}
+
+#button-main {
+  width: 10rem;
+  border: none;
+  background-color: #1c7340;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  height: 4rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  padding: 0 1.5rem;
+  align-self: flex-end;
+}
+
+#button-main:hover {
+  cursor: pointer;
+  background-color: #052b15;
+}
+
+#final-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#ending-text {
+  font-size: 1.7rem;
+}
+
+.link-button {
+  text-decoration: none;
+
+  background-color: #1c7340;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+
+  padding: 1.3rem 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+}
+
+.link-button:hover {
+  background-color: #052b15;
+}
+/*******************************************/
+/* Charge Capture */
+/*******************************************/
+#insurance-calculator {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+#insurance-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+/*******************************************/
+/* Final Bill */
+/*******************************************/
+#calculate-final-bill {
+  margin-top: 4rem;
+}
+
+.bill-info-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+  margin-bottom: 1rem;
+  justify-items: end;
+}
+
+label {
+  grid-column: 6;
+}
+
+.head {
+  grid-column: 5;
+}
+
+.total {
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  font-size: 1.7rem;
+}
+
+/*******************************************/
+/* Payment Method */
+/*******************************************/
+#payment-method-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center;
+  background-color: white;
+}
+
+#heading {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: #1c7340;
+  margin: 2rem 0;
+  font-size: 2.5rem;
+  align-self: center;
+}
+
+form {
+  min-width: 35rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: #eff5f2;
+  padding: 5rem;
+  margin-bottom: 2rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.radio-container {
+  display: flex;
+  gap: 1rem;
+}
