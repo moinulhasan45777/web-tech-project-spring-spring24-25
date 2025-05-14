@@ -5,6 +5,23 @@ const email = document.getElementById("user-email");
 const password = document.getElementById("user-pass");
 const agreeTerms = document.getElementsByName("terms")[0];
 const submitButton = document.getElementById("button-main");
+const changeAvatarButton = document.getElementById("change-avatar");
+const changeAvatarInput = document.getElementById("change-avatar-input");
+const proPicture = document.getElementById("profile-picture");
+
+// Upload Profile Picture
+changeAvatarButton.addEventListener("click", function () {
+  changeAvatarInput.click();
+});
+
+changeAvatarInput.addEventListener("change", function () {
+  const file = changeAvatarInput.files[0];
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    proPicture.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
 
 // ---------------------------------------------------------
 // ----------------Realtime Input Validation----------------

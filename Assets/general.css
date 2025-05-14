@@ -12,6 +12,7 @@ html {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 62.5%;
   background-color: #effbf4;
+  scroll-behavior: smooth;
 }
 
 * {
