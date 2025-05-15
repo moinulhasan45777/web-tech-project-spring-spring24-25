@@ -1,3 +1,34 @@
+<?php
+    session_start();
+    if(isset($_POST['button-main'])) {
+
+      $_SESSION['user_blood_group'] = $_POST['user-blood-group'];
+
+      // Date Validation
+      $dateBroken = explode('-', $_POST['user-dob']);
+      $date = $dateBroken[2] . $dateBroken[1] . $dateBroken[0];
+      $_SESSION['user_dob'] = $date;
+
+      $_SESSION['user_address'] = $_POST['user-address'];
+      $_SESSION['user_city'] = $_POST['user-city'];
+      
+      if($_POST['user-em-name'] != ""){
+        $_SESSION['user_em_name'] = $_POST['user-em-name'];  
+      }
+      
+      if($_POST['user-em-relation'] != ""){
+        $_SESSION['user_em_relation'] = $_POST['user-em-relation'];  
+      }
+
+      if($_POST['user-em-phone'] != ""){
+        $_SESSION['user_em_phone'] = $_POST['user-em-phone'];  
+      }
+
+      header("Location: medical_history.php");
+
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,7 +71,7 @@
     <!-------------------------------------------------------------------------------------->
 
     <main id="signup-main">
-      <h1 id="heading">Additional Info</h1>
+      <h1 id="heading">Medical History</h1>
       <form
         id="user-registration-form"
         method="post"
@@ -48,69 +79,365 @@
         enctype=""
         novalidate>
         <div class="input-container">
-          <label for="user-blood-group">Blood Group</label>
-          <select
+          <label class="medical-history-heading label-heading">
+            Patient Medical History (Check all that apply) :</label
+          >
+
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-1"
+              name="patient-medical-history-1"
+              value="Diabetes" />
+            <label for="medical-history-1">Diabetes</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-2"
+              name="patient-medical-history-2"
+              value="High blood pressure" />
+            <label for="medical-history-2">High blood pressure</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-3"
+              name="patient-medical-history-3"
+              value="Heart disease" />
+            <label for="medical-history-3">Heart disease</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-4"
+              name="patient-medical-history-4"
+              value="Stroke" />
+            <label for="medical-history-4">Stroke</label>
+          </div>
+
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-5"
+              name="patient-medical-history-5"
+              value="Asthma" />
+            <label for="medical-history-5">Asthma</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-6"
+              name="patient-medical-history-6"
+              value="Allergies" />
+            <label for="medical-history-6">Allergies</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-7"
+              name="patient-medical-history-7"
+              value="Cancer" />
+            <label for="medical-history-7">Cancer</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-8"
+              name="patient-medical-history-8"
+              value="Seizures" />
+            <label for="medical-history-8">Seizures</label>
+          </div>
+
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-9"
+              name="patient-medical-history-9"
+              value="Depression / Anxiety" />
+            <label for="medical-history-9">Depression / Anxiety</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-10"
+              name="patient-medical-history-10"
+              value="Thyroid Disorder" />
+            <label for="medical-history-10">Thyroid Disorder</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-11"
+              name="patient-medical-history-11"
+              value="Arthritis" />
+            <label for="medical-history-11">Arthritis</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-12"
+              name="patient-medical-history-12"
+              value="Kidney Disease" />
+            <label for="medical-history-12">Kidney Disease</label>
+          </div>
+
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-13"
+              name="patient-medical-history-13"
+              value="Liver Disease" />
+            <label for="medical-history-13">Liver Disease</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-14"
+              name="patient-medical-history-14"
+              value="Tuberculosis" />
+            <label for="medical-history-14">Tuberculosis</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-15"
+              name="patient-medical-history-15"
+              value="HIV / AIDS" />
+            <label for="medical-history-15">HIV / AIDS</label>
+          </div>
+          <div class="text-container">
+            <input
+              type="checkbox"
+              id="patient-medical-history-16"
+              name="patient-medical-history-16"
+              value="other" />
+            <label for="medical-history-16">Others</label>
+            <input
+              type="text"
+              id="patient-medical-history-others"
+              name="patient-medical-history-others"
+              placeholder="Ex: Schizophrenia, Parkinsons, ...."
+              class="text-field" />
+          </div>
+        </div>
+        <div class="input-container">
+          <label class="medical-history-heading label-heading">
+            Family Medical History (Check all that apply) :</label
+          >
+
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-1"
+              name="family-medical-history-1"
+              value="Diabetes" />
+            <label for="medical-history-1">Diabetes</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-2"
+              name="family-medical-history-2"
+              value="High blood pressure" />
+            <label for="medical-history-2">High blood pressure</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-3"
+              name="family-medical-history-3"
+              value="Heart disease" />
+            <label for="medical-history-3">Heart disease</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-4"
+              name="family-medical-history-4"
+              value="Stroke" />
+            <label for="medical-history-4">Stroke</label>
+          </div>
+
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-5"
+              name="family-medical-history-5"
+              value="Asthma" />
+            <label for="medical-history-5">Asthma</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-6"
+              name="family-medical-history-6"
+              value="Allergies" />
+            <label for="medical-history-6">Allergies</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-7"
+              name="family-medical-history-7"
+              value="Cancer" />
+            <label for="medical-history-7">Cancer</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-8"
+              name="family-medical-history-8"
+              value="Seizures" />
+            <label for="medical-history-8">Seizures</label>
+          </div>
+
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-9"
+              name="family-medical-history-9"
+              value="Depression / Anxiety" />
+            <label for="medical-history-9">Depression / Anxiety</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-10"
+              name="family-medical-history-10"
+              value="Thyroid Disorder" />
+            <label for="medical-history-10">Thyroid Disorder</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-11"
+              name="family-medical-history-11"
+              value="Arthritis" />
+            <label for="medical-history-11">Arthritis</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-12"
+              name="family-medical-history-12"
+              value="Kidney Disease" />
+            <label for="medical-history-12">Kidney Disease</label>
+          </div>
+
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-13"
+              name="family-medical-history-13"
+              value="Liver Disease" />
+            <label for="medical-history-13">Liver Disease</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-14"
+              name="family-medical-history-14"
+              value="Tuberculosis" />
+            <label for="medical-history-14">Tuberculosis</label>
+          </div>
+          <div class="checkbox-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-15"
+              name="family-medical-history-15"
+              value="HIV / AIDS" />
+            <label for="medical-history-15">HIV / AIDS</label>
+          </div>
+          <div class="text-container">
+            <input
+              type="checkbox"
+              id="family-medical-history-16"
+              name="family-medical-history-16"
+              value="other" />
+            <label for="medical-history-16">Others</label>
+            <input
+              type="text"
+              id="family-medical-history-others"
+              name="family-medical-history-others"
+              placeholder="Ex: Schizophrenia, Parkinsons, ...."
+              class="text-field" />
+          </div>
+        </div>
+        <div class="input-container">
+          <label for="user-current-drug" class="label-heading"
+            >Current Drug Addictions</label
+          >
+          <input
+            type="text"
+            id="user-current-drug"
             class="text-field"
-            id="user-blood-group"
-            name="user-blood-group">
-            <option value="">Select</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-            <option value="Unknown">Unknown</option>
-          </select>
+            name="user-current-drug"
+            placeholder="Ex: Weed, Cocaine, LSD, ..." />
         </div>
         <div class="input-container">
-          <label for="user-dob">Date of Birth</label>
-          <input type="date" class="text-field" id="user-dob" name="user-dob" />
-        </div>
-        <div class="input-container">
-          <label for="user-address">Present Address</label>
-          <textarea
-            id="user-address"
-            class="text-area"
-            name="user-address"></textarea>
-        </div>
-        <div class="input-container">
-          <label for="user-city">City</label>
+          <label for="user-previous-drug" class="label-heading"
+            >Previous Drug Addictions</label
+          >
           <input
             type="text"
             class="text-field"
-            id="user-city"
-            name="user-city" />
+            id="user-previous-drug"
+            name="user-previous-drug"
+            placeholder="Ex: Weed, Cocaine, LSD, ..." />
         </div>
         <div class="input-container">
-          <label for="user-em-name">Emergency Contact Name</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-em-name"
-            name="user-em-name" />
-        </div>
-        <div class="input-container">
-          <label for="user-em-relation">Emergency Contact Relation</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-em-relation"
-            name="user-em-relation" />
-        </div>
-        <div class="input-container">
-          <label for="user-em-phone">Emergency Contact Number</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-em-phone"
-            name="user-em-phone" />
+          <label for="weekly-activity-level" class="label-heading"
+            >Weekly Activity Level :</label
+          >
+          <div class="activity-level-container">
+            <input
+              type="radio"
+              class="radio-button"
+              id="activity-level-very-low"
+              name="weekly-activity-level"
+              value="Very Low" />
+            <label>Very Low</label>
+          </div>
+          <div class="activity-level-container">
+            <input
+              type="radio"
+              class="radio-button"
+              id="activity-level-low"
+              name="weekly-activity-level"
+              value="Low" />
+            <label>Low</label>
+          </div>
+          <div class="activity-level-container">
+            <input
+              type="radio"
+              class="radio-button"
+              id="activity-level-average"
+              name="weekly-activity-level"
+              value="Average" />
+            <label>Average</label>
+          </div>
+          <div class="activity-level-container">
+            <input
+              type="radio"
+              class="radio-button"
+              id="activity-level-high"
+              name="weekly-activity-level"
+              value="High" />
+            <label>High</label>
+          </div>
+          <div class="activity-level-container">
+            <input
+              type="radio"
+              class="radio-button"
+              id="activity-level-very-high"
+              name="weekly-activity-level"
+              value="Very High" />
+            <label>Very High</label>
+          </div>
         </div>
 
         <input type="submit" name="button-main" id="button-main" value="Save" />
-        <a href="medical_history.html" class="hidden-link"></a>
       </form>
     </main>
 
@@ -404,4 +731,3 @@
     <script src="../../Controller/User Authentication/detailed_signup_validation.js"></script>
   </body>
 </html>
-a

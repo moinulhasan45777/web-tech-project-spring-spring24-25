@@ -132,7 +132,6 @@ const clearButton = document.getElementById("clear-canvas");
 const canvas = document.getElementById("signature-canvas");
 const context = canvas.getContext("2d");
 const digitalSignatureInput = document.getElementById("digital-signature");
-
 function resizeCanvasToDisplaySize() {
   const rect = canvas.getBoundingClientRect();
   canvas.width = rect.width;
@@ -171,8 +170,13 @@ canvas.addEventListener("mouseleave", () => {
   drawing = false;
 });
 
+let count = 0;
 // Function to draw on the canvas
 function draw(x, y) {
+  if (count < 1) {
+    resizeCanvasToDisplaySize();
+    count++;
+  }
   context.beginPath();
   context.strokeStyle = "#000";
   context.lineWidth = 2;
@@ -183,6 +187,8 @@ function draw(x, y) {
   context.stroke();
   prevX = x;
   prevY = y;
+
+  console.log("Canvas size:", canvas.width, canvas.height);
 }
 
 function clearCanvas() {
@@ -213,6 +219,12 @@ function isCanvasBlank(canvas) {
 submitButton.addEventListener("click", function (e) {
   e.preventDefault();
 
+  // Profile Picture Validation
+  if (!changeAvatarInput.files.length > 0) {
+    alert("Please upload a Profile Picture");
+    changeAvatarButton.focus();
+    return;
+  }
   // User Full Name Validation
   fullName.value = fullName.value.trim();
   if (fullName.value.length < 3) {
@@ -347,7 +359,7 @@ submitButton.addEventListener("click", function (e) {
     agreeTerms.focus();
     return;
   }
-  form.submit();
+  form.requestSubmit(submitButton);
 });
 
 agreeTerms.addEventListener("click", function () {

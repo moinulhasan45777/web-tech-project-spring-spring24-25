@@ -1,7 +1,10 @@
 const form = document.getElementById("user-auth");
 const otp = document.getElementById("otp");
 const submitButton = document.getElementById("button-main");
-
+const timer = document.getElementById("timer");
+const resendForm = document.getElementById("resend-code-form");
+const resendButton = document.getElementById("resend-code");
+const resendLabel = document.getElementById("resend-label");
 // ---------------------------------------------------------
 // ----------------Realtime Input Validation----------------
 // ---------------------------------------------------------
@@ -57,5 +60,18 @@ submitButton.addEventListener("click", function (e) {
     otp.focus();
     return;
   }
-  form.submit();
+  form.requestSubmit(submitButton);
 });
+
+window.onload = function () {
+  let countdown = 60;
+  const interval = setInterval(() => {
+    if (countdown > 0) {
+      resendButton.value = `Wait ${countdown--}s`;
+    } else {
+      clearInterval(interval);
+      resendButton.value = "resend";
+      resendButton.disabled = false;
+    }
+  }, 1000);
+};

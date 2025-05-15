@@ -202,6 +202,17 @@ a {
 }
 
 /******************************************/
+/* Verify Email */
+/******************************************/
+#resend-code {
+  all: unset;
+  cursor: pointer; /* Optional: keeps the pointer cursor */
+  width: 5rem;
+  color: blue;
+  font-size: 1.2rem;
+}
+
+/******************************************/
 /* Medical History */
 /******************************************/
 .medical-history-heading {

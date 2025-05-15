@@ -115,5 +115,5 @@ submitButton.addEventListener("click", function (e) {
     emPhone.focus();
     return;
   }
-  form.submit();
+  form.requestSubmit(submitButton);
 });
