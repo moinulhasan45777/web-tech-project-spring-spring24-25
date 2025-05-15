@@ -5,7 +5,9 @@
 
     if (isset($_POST['button-main'])) {
         $info = ['email' => $_POST['user-email'], 'name' => $_POST['user-name'] ];
-
+        if(!isset($_SESSION['user_role'])) {
+          $_SESSION['user_role'] = "patient";
+        }
         $_SESSION['user_email'] = $info['email'];
         $_SESSION['user_name'] = $info['name'];
         $_SESSION['user_phone']  = $_POST['user-phone'];

@@ -1,32 +1,58 @@
 <?php
-    session_start();
+
+  require_once("../../Model/user_model.php");
+  session_start();
+
+  if(!isset($_SESSION["user_email"])){
+    header("Location: ../Landing Page/index.html");
+    exit;
+  }
+
     if(isset($_POST['button-main'])) {
 
-      $_SESSION['user_blood_group'] = $_POST['user-blood-group'];
-
-      // Date Validation
-      $dateBroken = explode('-', $_POST['user-dob']);
-      $date = $dateBroken[2] . $dateBroken[1] . $dateBroken[0];
-      $_SESSION['user_dob'] = $date;
-
-      $_SESSION['user_address'] = $_POST['user-address'];
-      $_SESSION['user_city'] = $_POST['user-city'];
-      
-      if($_POST['user-em-name'] != ""){
-        $_SESSION['user_em_name'] = $_POST['user-em-name'];  
+      // Taking Patient Medical History into a single string
+      $patientMedicalHistory = "";
+      for($i = 0; $i < 16; $i++){
+        if(isset($_POST["patient-medical-history-".$i])){
+          $patientMedicalHistory = $patientMedicalHistory . $_POST["patient-medical-history-" . $i] . ",";
+        }  
       }
       
-      if($_POST['user-em-relation'] != ""){
-        $_SESSION['user_em_relation'] = $_POST['user-em-relation'];  
+      if(isset($_POST["patient-medical-history-others"])) {
+        $patientMedicalHistory = $patientMedicalHistory . $_POST["patient-medical-history-others"];
+      }
+      else{
+        if($patientMedicalHistory != ""){
+          $patientMedicalHistory = substr($patientMedicalHistory,0,-1);
+        }
+      }
+      
+
+      // Taking Family Medical History into a single string
+      $familyMedicalHistory = "";
+      for($i = 0; $i < 16; $i++){
+        if(isset($_POST["family-medical-history-".$i])){
+          $familyMedicalHistory = $familyMedicalHistory . $_POST["family-medical-history-" . $i] . ",";
+        }  
       }
 
-      if($_POST['user-em-phone'] != ""){
-        $_SESSION['user_em_phone'] = $_POST['user-em-phone'];  
+      if(isset($_POST["patient-medical-history-others"])) {
+        $familyMedicalHistory = $familyMedicalHistory . $_POST["patient-medical-history-others"];
+      }
+      else{
+        if($familyMedicalHistory != ""){
+          $familyMedicalHistory = substr($familyMedicalHistory,0,-1);
+        }
+      } 
+
+      $user = ['email' => $_SESSION['user_email'], 'hash' => $_SESSION['user_pass'], 'role' => $_SESSION['user_role']];
+
+      if(addUser($user)){
+        header("Location: login.html");
       }
 
-      header("Location: medical_history.php");
-
-    }
+      
+  }
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +102,7 @@
         id="user-registration-form"
         method="post"
         action=""
-        enctype=""
+        enctype="multipart/form-data"
         novalidate>
         <div class="input-container">
           <label class="medical-history-heading label-heading">
@@ -728,6 +754,6 @@
       </section>
     </footer>
 
-    <script src="../../Controller/User Authentication/detailed_signup_validation.js"></script>
+    <script src="../../Controller/User Authentication/medical_history_validation.js"></script>
   </body>
 </html>
