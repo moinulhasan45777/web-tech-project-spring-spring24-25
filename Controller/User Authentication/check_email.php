@@ -21,6 +21,33 @@
         ]);
         $_SESSION['user_pass']  = $hash;
 
+
+        $data = $_POST['digital-signature'];
+
+    // Clean the base64 string
+    if (strpos($data, 'data:image/png;base64,') === 0) {
+        $data = str_replace('data:image/png;base64,', '', $data);
+    }
+
+    // Fix + to space conversion issue
+    $data = str_replace(' ', '+', $data);
+
+    // Decode the base64 string
+    $decoded = base64_decode($data);
+
+    if ($decoded === false) {
+        echo "Error decoding base64.";
+        exit;
+    }
+
+    // Save the file
+    $filename = 'upload/canvas_' . time() . '.png';
+    if (file_put_contents($filename, $decoded)) {
+        echo "Saved to $filename";
+    } else {
+        echo "Failed to save file.";
+    }
+
         // // Converting base64 to BLOB/Binary
         // $parts = explode(',', $_POST['digital-signature']);
         // $base64String = $parts[1];
@@ -28,12 +55,36 @@
         // $_SESSION['digital_signature']  = $imageData;
         
 
-        // // Getting Profile Picture as BLOB
-        // $filePath = $_FILES['change-avatar-input']['tmp_name'];
-        // $_SESSION['profile_picture']  = file_get_contents($filePath);
-        
-        
+        $src = $_FILES['change-avatar-input']['tmp_name'];
+        $des = "../../Assets/Uploads/Profile Pictures/" . $_SESSION['user_email'] . "." . pathinfo($_FILES['change-avatar-input']['name'], PATHINFO_EXTENSION);
 
+        if(move_uploaded_file($src, $des)){
+          $_SESSION['user_profile_picture'] = $des;
+        }
+
+        $dataUrl = $_POST['digital-signature'];
+        
+        // Extract base64 data
+        list($type, $data) = explode(';', $dataURL);
+        list(, $data) = explode(',', $data);
+        $data = base64_decode($data);
+
+        // Optional: detect image extension
+        $extension = strpos($type, 'jpeg') !== false ? '.jpg' : '.png';
+
+        $uploadDir = "../../Assets/Uploads/Digital Signatures/";
+        $fileName = "signature-" . $_SESSION['user_email'] . $extension;
+        $filePath = $uploadDir . $fileName;
+
+        if (file_put_contents($filePath, $data)) {
+          $_SESSION['digital_signature'] = $filePath;
+        } else {
+          echo "Failed to save image.";
+        }
+      
+        
+        
+        // BUG
         // if(checkExistingUser($_POST['user-email'])) {
         //   echo "<script>alert('Email already exists');
         //   window.location.href = 'signup.php';
