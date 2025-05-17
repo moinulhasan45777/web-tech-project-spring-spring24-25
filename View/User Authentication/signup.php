@@ -1,53 +1,10 @@
 <?php
 
-  require_once("../../Controller/User Authentication/send_code.php");
-  
-
-    if (isset($_POST['button-main'])) {
-        $info = ['email' => $_POST['user-email'], 'name' => $_POST['user-name'] ];
-        if(!isset($_SESSION['user_role'])) {
-          $_SESSION['user_role'] = "patient";
-        }
-        $_SESSION['user_email'] = $info['email'];
-        $_SESSION['user_name'] = $info['name'];
-        $_SESSION['user_phone']  = $_POST['user-phone'];
-
-        // Password Hashing
-        $hash = password_hash($_POST['user-pass'], PASSWORD_ARGON2ID, [
-          'memory_cost' => 1 << 17,
-          'time_cost' => 4,
-          'threads' => 2
-        ]);
-        $_SESSION['user_pass']  = $hash;
-
-        // Converting base64 to BLOB/Binary
-        $parts = explode(',', $_POST['digital-signature']);
-        $base64String = $parts[1];
-        $imageData = base64_decode($base64String);
-        $_SESSION['digital_signature']  = $imageData;
-        
-
-        // Getting Profile Picture as BLOB
-        $filePath = $_FILES['change-avatar-input']['tmp_name'];
-        $_SESSION['profile_picture']  = file_get_contents($filePath);
-        
-        // Sending Verification Code
-        if(send_mail($info)) {
-          header("Location: verify_email.php");
-        }
-        exit;
-    } 
-
-// if (isset($_POST['button-main'])) {
-//     $email = $_POST['user-email'];
-//     $name = $_POST['user-name'];
-//     $_SESSION['user_email'] = $email;
-//     $_SESSION['user_name'] = $name; // ✅ Store email in session
-
-//     // generate code, send email, etc.
-//     header("Location: verify_email.php"); // ✅ Go to verification page
-//     exit;
-// }
+  session_start();
+  // Setting prev values
+  $name = $_SESSION['user_name'] ?? '';
+  $phone = $_SESSION['user_phone'] ?? '';
+  $email = $_SESSION['user_email'] ?? '';
 ?>
 
 <!DOCTYPE html>
@@ -97,7 +54,7 @@
       <form
         id="user-registration-form"
         method="post"
-        action=""
+        action="../../Controller/User Authentication/check_email.php"
         enctype="multipart/form-data"
         novalidate
       >
@@ -129,6 +86,7 @@
             class="text-field"
             id="user-name"
             name="user-name"
+            value="<?php echo htmlspecialchars($name); ?>"
           />
         </div>
         <div class="input-container">
@@ -138,6 +96,7 @@
             class="text-field"
             id="user-phone"
             name="user-phone"
+            value="<?php echo htmlspecialchars($phone); ?>"
           />
         </div>
         <div class="input-container">
@@ -147,6 +106,7 @@
             id="user-email"
             class="text-field"
             name="user-email"
+            value="<?php echo htmlspecialchars($email); ?>"
           />
         </div>
         <div class="input-container">
