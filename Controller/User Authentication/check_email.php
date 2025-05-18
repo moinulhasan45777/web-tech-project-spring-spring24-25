@@ -21,33 +21,6 @@
         ]);
         $_SESSION['user_pass']  = $hash;
 
-
-        $data = $_POST['digital-signature'];
-
-    // Clean the base64 string
-    if (strpos($data, 'data:image/png;base64,') === 0) {
-        $data = str_replace('data:image/png;base64,', '', $data);
-    }
-
-    // Fix + to space conversion issue
-    $data = str_replace(' ', '+', $data);
-
-    // Decode the base64 string
-    $decoded = base64_decode($data);
-
-    if ($decoded === false) {
-        echo "Error decoding base64.";
-        exit;
-    }
-
-    // Save the file
-    $filename = 'upload/canvas_' . time() . '.png';
-    if (file_put_contents($filename, $decoded)) {
-        echo "Saved to $filename";
-    } else {
-        echo "Failed to save file.";
-    }
-
         // // Converting base64 to BLOB/Binary
         // $parts = explode(',', $_POST['digital-signature']);
         // $base64String = $parts[1];
@@ -55,33 +28,30 @@
         // $_SESSION['digital_signature']  = $imageData;
         
 
+        // Profile Picture Upload
         $src = $_FILES['change-avatar-input']['tmp_name'];
-        $des = "../../Assets/Uploads/Profile Pictures/" . $_SESSION['user_email'] . "." . pathinfo($_FILES['change-avatar-input']['name'], PATHINFO_EXTENSION);
+        $des = "../../Assets/Uploads/Profile Pictures/" . $_POST['user-email'] . '.' . pathinfo($_FILES['change-avatar-input']['name'], PATHINFO_EXTENSION);
 
         if(move_uploaded_file($src, $des)){
-          $_SESSION['user_profile_picture'] = $des;
+          $_SESSION['user_profile_picture'] = $_POST['user-email'] . '.' . pathinfo($_FILES['change-avatar-input']['name'], PATHINFO_EXTENSION);
+        }else{
+          // BUG
         }
 
-        $dataUrl = $_POST['digital-signature'];
+
+        // Digital Signature
+      	define('UPLOAD_DIR', '../../Assets/Uploads/Digital Signatures/');
+	      $img = $_POST['digital-signature'];
+	      $img = str_replace('data:image/png;base64,', '', $img);
+	      $img = str_replace(' ', '+', $img);
+	      $data = base64_decode($img);
+	      $file = UPLOAD_DIR . $_POST['user-email'] . '.png';
+	      if(file_put_contents($file, $data)){
+          $_SESSION['user_digital_signature'] = $_POST['user-email'] . '.png';
+        }else{
+          // BUG
+        }
         
-        // Extract base64 data
-        list($type, $data) = explode(';', $dataURL);
-        list(, $data) = explode(',', $data);
-        $data = base64_decode($data);
-
-        // Optional: detect image extension
-        $extension = strpos($type, 'jpeg') !== false ? '.jpg' : '.png';
-
-        $uploadDir = "../../Assets/Uploads/Digital Signatures/";
-        $fileName = "signature-" . $_SESSION['user_email'] . $extension;
-        $filePath = $uploadDir . $fileName;
-
-        if (file_put_contents($filePath, $data)) {
-          $_SESSION['digital_signature'] = $filePath;
-        } else {
-          echo "Failed to save image.";
-        }
-      
         
         
         // BUG
@@ -96,6 +66,8 @@
         // Sending Verification Code
         if(send_mail($info)) {
           header("Location: ../../View/User Authentication/verify_email.html");
+        }else{
+          // BUG
         }
         exit;
     } 
