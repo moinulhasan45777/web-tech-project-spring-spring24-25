@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(!isset($_POST['user_dob'])){
+    header('Location: login.html');
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

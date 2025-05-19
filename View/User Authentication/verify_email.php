@@ -1,3 +1,12 @@
+<?php
+
+  session_start();
+  if(!isset($_SESSION['user_email'])){
+    header('Location: login.html');
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,27 +49,25 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main id="login-main">
-      <img id="login-logo" src="../../Assets/Logo/main-logo-without-text.png" />
-      <form id="user-auth" method="post" action="" enctype="" novalidate>
+    <main id="signup-main">
+      <h1 id="heading">Verify Email</h1>
+      <form
+        id="user-auth"
+        method="post"
+        action="../../Controller/User Authentication/verify_code.php"
+        enctype="multipart/form-data"
+        novalidate
+      >
         <div class="input-container">
-          <label for="user-pass">New password</label>
+          <label for="verify-email"
+            >Enter the code that was <br />sent to your email</label
+          >
           <input
-            type="password"
-            id="user-pass"
+            type="text"
             class="text-field"
-            name="user-pass"
-            placeholder="**********"
-          />
-        </div>
-        <div class="input-container">
-          <label for="user-pass">Confirm new password</label>
-          <input
-            type="password"
-            id="user-pass-confirm"
-            class="text-field"
-            name="user-pass-confirm"
-            placeholder="**********"
+            id="otp"
+            name="otp"
+            placeholder="Ex: 608776"
           />
         </div>
 
@@ -68,8 +75,25 @@
           type="submit"
           name="button-main"
           id="button-main"
-          value="Reset Password"
+          value="Verify"
         />
+        <form
+          id="resend-code-form"
+          method="post"
+          action=""
+          enctype="multipart/form-data"
+        >
+          <div id="label-container">
+            <label id="resend-label">Didn't get the code?</label>
+            <input
+              type="submit"
+              id="resend-code"
+              name="resend-code"
+              value="Wait 60s"
+              disabled
+            />
+          </div>
+        </form>
       </form>
     </main>
 
@@ -403,6 +427,6 @@
       </section>
     </footer>
 
-    <script src="../../Controller/User Authentication/reset_pass_validation.js"></script>
+    <script src="../../Controller/User Authentication/verify_email_validation.js"></script>
   </body>
 </html>

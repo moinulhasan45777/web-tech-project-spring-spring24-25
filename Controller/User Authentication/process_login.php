@@ -14,6 +14,11 @@
     if(login($user)){
       echo "<script>alert('HAHA');</script>"; //TODO
       exit;
+    } else{
+      echo "<script>alert('Wrong Username or Password');
+          window.location.href = '../../View/User Authentication/login.html';
+          </script>";
+          exit;
     }
   }
 ?>

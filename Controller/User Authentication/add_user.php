@@ -91,7 +91,10 @@
                             'user_id' => $_SESSION['user_id']];
       
       if(addMedicalHistory($userMedicalHistory)){
-
+        echo "<script>alert('Signup Successful. Please use the email and password to login!');
+          window.location.href = '../../View/User Authentication/login.html';
+          </script>";
+          exit;
       }
       else{
 

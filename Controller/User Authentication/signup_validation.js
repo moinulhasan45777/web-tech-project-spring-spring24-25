@@ -9,6 +9,8 @@ const changeAvatarButton = document.getElementById("change-avatar");
 const changeAvatarInput = document.getElementById("change-avatar-input");
 const proPicture = document.getElementById("profile-picture");
 
+const allowedPictureExtensions = [".png", ".jpg", "jpeg"];
+
 // Upload Profile Picture
 changeAvatarButton.addEventListener("click", function () {
   changeAvatarInput.click();
@@ -222,6 +224,16 @@ submitButton.addEventListener("click", function (e) {
   // Profile Picture Validation
   if (!changeAvatarInput.files.length > 0) {
     alert("Please upload a Profile Picture");
+    changeAvatarButton.focus();
+    return;
+  }
+  console.log(changeAvatarInput.files[0].name.slice(-4));
+  if (
+    !allowedPictureExtensions.includes(
+      changeAvatarInput.files[0].name.slice(-4)
+    )
+  ) {
+    alert("Please upload a valid Profile Picture");
     changeAvatarButton.focus();
     return;
   }
