@@ -10,6 +10,8 @@
 
     if(isset($_POST['button-main'])) {
 
+
+
       // Taking Patient Medical History into a single string
       $patientMedicalHistory = "";
       for($i = 0; $i < 16; $i++){
@@ -27,10 +29,9 @@
         }
       }
 
-      $_SESSION["user_medical_history"] = $patientMedicalHistory;
       
       
-
+      
       // Taking Family Medical History into a single string
       $familyMedicalHistory = "";
       for($i = 0; $i < 16; $i++){
@@ -48,8 +49,64 @@
         }
       } 
 
-      $_SESSION["user_family_medical_history"] = $familyMedicalHistory;
+      $currentDrug = $_POST[''];
+      $previousDrug = $_POST[''];
+      $pmOthers = $_POST['patient-medical-history-others'];
+      $fmOthers = $_POST['family-medical-history-others'];
+      $weeklyActivity = $_POST['weekly-activity-level'];
 
+      // Patient Medical History Others Validation
+      for($i = 0; $i < strlen($pmOthers); $i++){
+      if(($pmOthers[$i] < 'A' || $pmOthers[$i] > 'Z') && ($pmOthers[$i] < 'a' || $pmOthers[$i] > 'z') && $pmOthers[$i] != '.' && $pmOthers[$i] != '-' && $pmOthers[$i] != ' ' ){
+        echo "<script>alert('Invalid Patient Other Medical History');
+          window.location.href = '../../View/User Authentication/signup.php';
+          </script>";
+          exit;
+        }
+      }
+
+      // Family Medical History Others Validation
+      for($i = 0; $i < strlen($fmOthers); $i++){
+      if(($fmOthers[$i] < 'A' || $fmOthers[$i] > 'Z') && ($fmOthers[$i] < 'a' || $fmOthers[$i] > 'z') && $fmOthers[$i] != '.' && $fmOthers[$i] != '-' && $fmOthers[$i] != ' ' ){
+        echo "<script>alert('Invalid Patient Other Medical History');
+          window.location.href = '../../View/User Authentication/signup.php';
+          </script>";
+          exit;
+        }
+      }
+
+      // Current Drugs Validation
+      for($i = 0; $i < strlen($currentDrug); $i++){
+      if(($currentDrug[$i] < 'A' || $currentDrug[$i] > 'Z') && ($currentDrug[$i] < 'a' || $currentDrug[$i] > 'z') && $currentDrug[$i] != '.' && $currentDrug[$i] != '-' && $currentDrug[$i] != ' ' ){
+        echo "<script>alert('Invalid Current Drug Names');
+          window.location.href = '../../View/User Authentication/signup.php';
+          </script>";
+          exit;
+        }
+      }
+
+      // Name Validation
+      for($i = 0; $i < strlen($previousDrug); $i++){
+      if(($previousDrug[$i] < 'A' || $previousDrug[$i] > 'Z') && ($previousDrug[$i] < 'a' || $previousDrug[$i] > 'z') && $previousDrug[$i] != '.' && $previousDrug[$i] != '-' && $previousDrug[$i] != ' ' ){
+        echo "<script>alert('Invalid Previous Drug Names');
+          window.location.href = '../../View/User Authentication/signup.php';
+          </script>";
+          exit;
+        }
+      }
+
+      // Weekly Activity Level Validation
+      if(!isset($weeklyActivity)){
+        echo "<script>alert('Please select weekly activity level!');
+          window.location.href = '../../View/User Authentication/signup.php';
+          </script>";
+          exit;
+        }
+      }
+
+
+      $_SESSION["user_family_medical_history"] = $familyMedicalHistory;
+      $_SESSION["user_medical_history"] = $patientMedicalHistory;
       $_SESSION['user_current_drug'] = $_POST['user-current-drug'];
       $_SESSION['user_previous_drug'] = $_POST['user-previous-drug'];
       $_SESSION['user_weekly_activity_level'] = $_POST['weekly-activity-level'];
