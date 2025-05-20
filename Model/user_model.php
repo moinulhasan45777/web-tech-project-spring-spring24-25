@@ -24,6 +24,16 @@
         return false;
     }
 
+    function checkExistingPass($user){
+        $con = getConnection();
+        $sql = "select * from users where email = '{$user['email']}' AND hash = '{$user['hash']}'";
+        $result = mysqli_query($con, $sql);
+        if(mysqli_num_rows($result) > 0){
+            return true;
+        }
+        return false;
+    }
+
     function login($user){
         $con = getConnection();
         $sql = "select * from users where email='{$user['email']}' and password='{$user['pass']}'";
@@ -64,6 +74,17 @@
             return true;
         }
         return false;
+    }
+
+    function updatePass($user){
+        $con = getConnection();
+        $sql = "UPDATE users SET hash='{$user['hash']}' WHERE email='{$user['email']}'";
+
+        if(mysqli_query( $con, $sql)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     // function getUserById($id){

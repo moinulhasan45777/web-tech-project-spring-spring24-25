@@ -189,8 +189,6 @@ function draw(x, y) {
   context.stroke();
   prevX = x;
   prevY = y;
-
-  console.log("Canvas size:", canvas.width, canvas.height);
 }
 
 function clearCanvas() {

@@ -33,14 +33,6 @@ submitButton.addEventListener("click", function (e) {
     return;
   }
 
-  for (let i = atIndex + 1; i < dotIndex; i++) {
-    if (email.value[i] == ".") {
-      alert("Please enter a valid email address.");
-      email.focus();
-      return;
-    }
-  }
-
   // User Password Validation
   if (password.value.length < 1) {
     alert("Please enter the password.");

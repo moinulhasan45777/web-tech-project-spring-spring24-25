@@ -1,3 +1,12 @@
+<?php
+
+  session_start();
+  if(!isset($_SESSION['user_email'])){
+    header('Location: forgot_pass.html');
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,96 +49,142 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main id="view-profile-main">
-      <h1 id="heading">Profile</h1>
-      <div id="info-container-view">
+    <main id="edit-profile-main">
+      <h1 id="heading">Edit Profile</h1>
+      <form
+        id="edit-profile-form"
+        method="post"
+        action=""
+        enctype=""
+        novalidate
+      >
         <div class="input-container pro-pic-container">
-          <label class="info-label">Profile Picture</label>
+          <label>Profile Picture</label>
           <img
             id="profile-picture"
             src="../../Assets/Images/sample-pro-pic.JPG"
             alt="Profile Picture"
           />
+          <input
+            type="file"
+            class="change-avatar-input"
+            name="change-avatar-input"
+            id="change-avatar-input"
+          />
+          <input
+            type="button"
+            id="change-avatar"
+            class="small-button"
+            value="Upload"
+          />
         </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-name">Name: </label>
-          <p class="info-field" id="user-name" name="user-name">Moinul Hasan</p>
+        <div class="input-container">
+          <label for="user-name">Full Name</label>
+          <input
+            type="text"
+            class="text-field"
+            id="user-name"
+            name="user-name"
+          />
         </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-phone">Mobile: </label>
-          <p class="info-field" id="user-phone" name="user-phone">
-            01746670010
-          </p>
+        <div class="input-container">
+          <label for="user-phone">Mobile</label>
+          <input
+            type="text"
+            class="text-field"
+            id="user-phone"
+            name="user-phone"
+          />
         </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-email">Email: </label>
-          <p class="info-field" id="user-email" name="user-email">
-            moinulhasan45777@gmail.com
-          </p>
+        <div class="input-container">
+          <label for="user-email">Email</label>
+          <input
+            type="email"
+            id="user-email"
+            class="text-field"
+            name="user-email"
+            readonly
+          />
         </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-pass">Password: </label>
-          <p class="info-field" id="user-pass" name="user-pass">
-            **************
-          </p>
-          <a class="small-button update-button" href="update_pass.html"
-            >Update</a
+        <div class="input-container">
+          <label for="user-blood-group">Blood Group</label>
+          <select
+            class="text-field"
+            id="user-blood-group"
+            name="user-blood-group"
           >
+            <option value="">Select</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="Unknown">Unknown</option>
+          </select>
+        </div>
+        <div class="input-container">
+          <label for="user-dob">Date of Birth</label>
+          <input type="date" class="text-field" id="user-dob" name="user-dob" />
+        </div>
+        <div class="input-container">
+          <label for="user-address">Present Address</label>
+          <textarea
+            id="user-address"
+            class="text-area"
+            name="user-address"
+          ></textarea>
+        </div>
+        <div class="input-container">
+          <label for="user-city">City</label>
+          <input
+            type="text"
+            class="text-field"
+            id="user-city"
+            name="user-city"
+          />
         </div>
         <div class="input-container pro-pic-container">
-          <label class="info-label">Digital Signature:</label>
+          <label>Digital Signature</label>
           <img
             id="digital-signature"
             src="../../Assets/Images/Profile Management/Sample Signature.png"
             alt="Digital Signature"
           />
+          <a class="small-button" href="change_signature.html">Change</a>
         </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-blood-group">Blood Group: </label>
-          <p class="info-field" id="user-blood-group" name="user-blood-group">
-            A+
-          </p>
+        <div class="input-container">
+          <label for="user-em-name">Emergency Contact Name</label>
+          <input
+            type="text"
+            class="text-field"
+            id="user-em-name"
+            name="user-em-name"
+          />
         </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-dob">Date of Birth:</label>
-          <p class="info-field" id="user-dob" name="user-dob">23/5/2000</p>
+        <div class="input-container">
+          <label for="user-em-relation">Emergency Contact Relation</label>
+          <input
+            type="text"
+            class="text-field"
+            id="user-em-relation"
+            name="user-em-relation"
+          />
         </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-address">Present Address:</label>
-          <p id="user-address" class="info-field" name="user-address">
-            House-10, Lane-3, Mirpur-10, Dhaka-1216
-          </p>
+        <div class="input-container">
+          <label for="user-em-phone">Emergency Contact Number</label>
+          <input
+            type="text"
+            class="text-field"
+            id="user-em-phone"
+            name="user-em-phone"
+          />
         </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-city">City:</label>
-          <p class="info-field" id="user-city" name="user-city">Dhaka</p>
-        </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-em-name"
-            >Emergency Contact Name:</label
-          >
-          <p class="info-field" id="user-em-name" name="user-em-name">
-            Harun Or Rashid
-          </p>
-        </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-em-relation"
-            >Emergency Contact Relation:</label
-          >
-          <p class="info-field" id="user-em-relation" name="user-em-relation">
-            Biological Father
-          </p>
-        </div>
-        <div class="input-container-view">
-          <label class="info-label" for="user-em-phone"
-            >Emergency Contact Number:</label
-          >
-          <p class="info-field" id="user-em-phone" name="user-em-phone">
-            +8801715475440
-          </p>
-        </div>
-        <a href="edit_profile.html" class="link-button">Edit</a>
-      </div>
+
+        <input type="submit" name="button-main" id="button-main" value="Save" />
+      </form>
     </main>
 
     <!-------------------------------------------------------------------------------------->
@@ -461,6 +516,8 @@
         <p id="copyright-text">Copyright &copy; 2025 Heritage Medical Center</p>
       </section>
     </footer>
+
+    <script src="../../Controller/Profile Management/edit_profile_validation.js"></script>
   </body>
 </html>
 a

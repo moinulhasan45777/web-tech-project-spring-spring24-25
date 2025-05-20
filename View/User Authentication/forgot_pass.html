@@ -40,7 +40,13 @@
 
     <main id="login-main">
       <img id="login-logo" src="../../Assets/Logo/main-logo-without-text.png" />
-      <form id="user-auth" method="post" action="" enctype="" novalidate>
+      <form
+        id="user-auth"
+        method="post"
+        action="../../Controller/User Authentication/process_forgot_pass.php"
+        enctype="multipart/form-data"
+        novalidate
+      >
         <div class="input-container">
           <label for="user-email">Enter your email</label>
           <input
@@ -51,7 +57,12 @@
             placeholder="john@example.com"
           />
         </div>
-        <input type="submit" name="sign-in" id="button-main" value="Proceed" />
+        <input
+          type="submit"
+          name="button-main"
+          id="button-main"
+          value="Proceed"
+        />
       </form>
     </main>
 

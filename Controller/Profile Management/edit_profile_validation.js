@@ -1,4 +1,6 @@
 const form = document.getElementById("user-registration-form");
+const fullName = document.getElementById("user-name");
+const phone = document.getElementById("user-phone");
 const bloodGroup = document.getElementById("user-blood-group");
 const dob = document.getElementById("user-dob");
 const presentAddress = document.getElementById("user-address");
@@ -15,9 +17,108 @@ const changeAvatarInput = document.getElementById("change-avatar-input");
 // ---------------------------------------------------------
 // ----------------Realtime Input Validation----------------
 // ---------------------------------------------------------
+let previousValueUserName = "";
+
+// User Full Name Validation
+fullName.addEventListener("input", function (e) {
+  let lastInputIndex = -1;
+
+  if (previousValueName == "") {
+    lastInputIndex = 0;
+  } else {
+    for (let i = 0; i < previousValueUserName.length; i++) {
+      if (fullName.value[i] != previousValueUserName[i]) {
+        lastInputIndex = i;
+        break;
+      }
+    }
+
+    if (lastInputIndex == -1) {
+      lastInputIndex = fullName.value.length - 1;
+    }
+  }
+
+  if (
+    (fullName.value[lastInputIndex] < "a" ||
+      fullName.value[lastInputIndex] > "z") &&
+    (fullName.value[lastInputIndex] < "A" ||
+      fullName.value[lastInputIndex] > "Z") &&
+    fullName.value[lastInputIndex] != " " &&
+    fullName.value[lastInputIndex] != "." &&
+    fullName.value[lastInputIndex] != "-"
+  ) {
+    if (previousValueUserName == "") {
+      fullName.value = "";
+    } else if (lastInputIndex == fullName.value.length - 1) {
+      fullName.value = fullName.value.slice(0, -1);
+    } else {
+      fullName.value =
+        fullName.value.slice(0, lastInputIndex) +
+        fullName.value.slice(lastInputIndex + 1);
+    }
+  }
+
+  previousValueUserName = fullName.value;
+});
+
+// User Mobile-number Validation
+let previousValueUserMobile = "";
+phone.addEventListener("input", function (e) {
+  let lastInputIndex = -1;
+
+  if (previousValueUserMobile == "") {
+    lastInputIndex = 0;
+  } else {
+    for (let i = 0; i < previousValueUserMobile.length; i++) {
+      if (phone.value[i] != previousValueUserMobile[i]) {
+        lastInputIndex = i;
+        break;
+      }
+    }
+
+    if (lastInputIndex == -1) {
+      lastInputIndex = phone.value.length - 1;
+    }
+  }
+
+  if (
+    (phone.value[lastInputIndex] !== "+" &&
+      (phone.value[lastInputIndex] < "0" ||
+        phone.value[lastInputIndex] > "9")) ||
+    (phone.value[0] == "+" && phone.value.length > 14) ||
+    (phone.value[0] != "+" && phone.value.length > 11)
+  ) {
+    if (previousValueUserMobile == "") {
+      phone.value = "";
+    } else if (lastInputIndex == phone.value.length - 1) {
+      phone.value = phone.value.slice(0, -1);
+    } else {
+      phone.value =
+        phone.value.slice(0, lastInputIndex) +
+        phone.value.slice(lastInputIndex + 1);
+    }
+  } else if (lastInputIndex != 0 && phone.value[lastInputIndex] == "+") {
+    if (lastInputIndex == phone.value.length - 1) {
+      phone.value = phone.value.slice(0, -1);
+    } else {
+      phone.value =
+        phone.value.slice(0, lastInputIndex) +
+        phone.value.slice(lastInputIndex + 1);
+    }
+  } else if (
+    previousValueUserMobile != "" &&
+    phone.value[lastInputIndex] == "+" &&
+    phone.value[0] == "+" &&
+    phone.value.slice(1).includes("+")
+  ) {
+    phone.value = phone.value.slice(1);
+  }
+
+  previousValueUserMobile = phone.value;
+});
 
 // User Emergency Mobile-number Validation
-let Mobile = "";
+let previousValueMobile = "";
 emPhone.addEventListener("input", function (e) {
   let lastInputIndex = 15;
 
@@ -68,6 +169,135 @@ const dateInput = document.getElementById("user-dob");
 const today = new Date().toISOString().split("T")[0];
 dateInput.max = today;
 
+// City
+let previousValueCity = "";
+
+city.addEventListener("input", function (e) {
+  let lastInputIndex = -1;
+
+  if (previousValueCity == "") {
+    lastInputIndex = 0;
+  } else {
+    for (let i = 0; i < previousValueCity.length; i++) {
+      if (city.value[i] != previousValueCity[i]) {
+        lastInputIndex = i;
+        break;
+      }
+    }
+
+    if (lastInputIndex == -1) {
+      lastInputIndex = city.value.length - 1;
+    }
+  }
+
+  if (
+    (city.value[lastInputIndex] < "a" || city.value[lastInputIndex] > "z") &&
+    (city.value[lastInputIndex] < "A" || city.value[lastInputIndex] > "Z") &&
+    city.value[lastInputIndex] != " " &&
+    city.value[lastInputIndex] != "." &&
+    city.value[lastInputIndex] != "-"
+  ) {
+    if (previousValueCity == "") {
+      city.value = "";
+    } else if (lastInputIndex == city.value.length - 1) {
+      city.value = city.value.slice(0, -1);
+    } else {
+      city.value =
+        city.value.slice(0, lastInputIndex) +
+        city.value.slice(lastInputIndex + 1);
+    }
+  }
+
+  previousValueCity = city.value;
+});
+
+// Emergency Name
+let previousValueName = "";
+
+emName.addEventListener("input", function (e) {
+  let lastInputIndex = -1;
+
+  if (previousValueName == "") {
+    lastInputIndex = 0;
+  } else {
+    for (let i = 0; i < previousValueName.length; i++) {
+      if (emName.value[i] != previousValueName[i]) {
+        lastInputIndex = i;
+        break;
+      }
+    }
+
+    if (lastInputIndex == -1) {
+      lastInputIndex = emName.value.length - 1;
+    }
+  }
+
+  if (
+    (emName.value[lastInputIndex] < "a" ||
+      emName.value[lastInputIndex] > "z") &&
+    (emName.value[lastInputIndex] < "A" ||
+      emName.value[lastInputIndex] > "Z") &&
+    emName.value[lastInputIndex] != " " &&
+    emName.value[lastInputIndex] != "." &&
+    emName.value[lastInputIndex] != "-"
+  ) {
+    if (previousValueName == "") {
+      emName.value = "";
+    } else if (lastInputIndex == emName.value.length - 1) {
+      emName.value = emName.value.slice(0, -1);
+    } else {
+      emName.value =
+        emName.value.slice(0, lastInputIndex) +
+        emName.value.slice(lastInputIndex + 1);
+    }
+  }
+
+  previousValueName = emName.value;
+});
+
+// Emergency Relation
+let previousValueRelation = "";
+
+emRelation.addEventListener("input", function (e) {
+  let lastInputIndex = -1;
+
+  if (previousValueRelation == "") {
+    lastInputIndex = 0;
+  } else {
+    for (let i = 0; i < previousValueRelation.length; i++) {
+      if (emRelation.value[i] != previousValueRelation[i]) {
+        lastInputIndex = i;
+        break;
+      }
+    }
+
+    if (lastInputIndex == -1) {
+      lastInputIndex = emRelation.value.length - 1;
+    }
+  }
+
+  if (
+    (emRelation.value[lastInputIndex] < "a" ||
+      emRelation.value[lastInputIndex] > "z") &&
+    (emRelation.value[lastInputIndex] < "A" ||
+      emRelation.value[lastInputIndex] > "Z") &&
+    emRelation.value[lastInputIndex] != " " &&
+    emRelation.value[lastInputIndex] != "." &&
+    emRelation.value[lastInputIndex] != "-"
+  ) {
+    if (previousValueRelation == "") {
+      emRelation.value = "";
+    } else if (lastInputIndex == emRelation.value.length - 1) {
+      emRelation.value = emRelation.value.slice(0, -1);
+    } else {
+      emRelation.value =
+        emRelation.value.slice(0, lastInputIndex) +
+        emRelation.value.slice(lastInputIndex + 1);
+    }
+  }
+  previousValueRelation = emRelation.value;
+});
+
 // Upload Profile Picture
 changeAvatarButton.addEventListener("click", function () {
   changeAvatarInput.click();
@@ -82,56 +312,63 @@ changeAvatarInput.addEventListener("change", function () {
   reader.readAsDataURL(file);
 });
 
-// ---------------------------------------------------------
-// ----------------On Submit Input Validation---------------
-// ---------------------------------------------------------
+// On Submit Input Validation not Required
+// // ---------------------------------------------------------
+// // ----------------On Submit Input Validation---------------
+// // ---------------------------------------------------------
 
-submitButton.addEventListener("click", function (e) {
-  e.preventDefault();
+// submitButton.addEventListener("click", function (e) {
+//   e.preventDefault();
 
-  if (bloodGroup.value == "") {
-    alert("Please select a blood group.");
-    bloodGroup.focus();
-    return;
-  }
+//   if (fullName.value.trim() == "") {
+//     alert("Please enter the name");
+//     fullName.focus();
+//     return;
+//   }
 
-  if (dob.value == "") {
-    alert("Please select a date of birth.");
-    dob.focus();
-    return;
-  }
+//   if (bloodGroup.value == "") {
+//     alert("Please select a blood group.");
+//     bloodGroup.focus();
+//     return;
+//   }
 
-  // Formatting Date of Birth
-  const dobDate = dob.value.split("-");
+//   if (dob.value == "") {
+//     alert("Please select a date of birth.");
+//     dob.focus();
+//     return;
+//   }
 
-  if (presentAddress.value.length < 5) {
-    alert("Please enter a valid address.");
-    presentAddress.focus();
-    return;
-  }
+//   // Formatting Date of Birth
+//   const dobDate = dob.value.split("-");
 
-  if (city.value.length < 3) {
-    alert("Please enter a valid city name.");
-    city.focus();
-    return;
-  }
+//   if (presentAddress.value.length < 5) {
+//     alert("Please enter a valid address.");
+//     presentAddress.focus();
+//     return;
+//   }
 
-  if (emName.value.length < 3) {
-    alert("Please enter a valid emergency contact name.");
-    emName.focus();
-    return;
-  }
+//   if (city.value.length < 3) {
+//     alert("Please enter a valid city name.");
+//     city.focus();
+//     return;
+//   }
 
-  if (emRelation.value.length < 3) {
-    alert("Please enter a valid emergency contact relation.");
-    emRelation.focus();
-    return;
-  }
+//   if (emName.value.length < 3) {
+//     alert("Please enter a valid emergency contact name.");
+//     emName.focus();
+//     return;
+//   }
 
-  if (emPhone.value.length != 11 && emPhone.value.length != 14) {
-    alert("Please enter a valid emergency contact number.");
-    emPhone.focus();
-    return;
-  }
-  form.submit();
-});
+//   if (emRelation.value.length < 3) {
+//     alert("Please enter a valid emergency contact relation.");
+//     emRelation.focus();
+//     return;
+//   }
+
+//   if (emPhone.value.length != 11 && emPhone.value.length != 14) {
+//     alert("Please enter a valid emergency contact number.");
+//     emPhone.focus();
+//     return;
+//   }
+//   form.submit();
+// });

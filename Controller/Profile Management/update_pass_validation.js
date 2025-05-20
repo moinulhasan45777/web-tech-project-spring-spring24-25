@@ -1,14 +1,19 @@
 const form = document.getElementById("user-auth");
+const currentPass = document.getElementById("current-pass");
+const password = document.getElementById("new-pass");
+const confirmPass = document.getElementById("user-pass-confirm");
 const submitButton = document.getElementById("button-main");
-const password = document.getElementById("user-pass");
-const confirmPasswordInput = document.getElementById("user-pass-confirm");
 
-// ---------------------------------------------------------
-// ----------------On Submit Input Validation---------------
-// ---------------------------------------------------------
-
+// ************************************************
+// On Submit Validation
+// ************************************************
 submitButton.addEventListener("click", function (e) {
   e.preventDefault();
+
+  if (currentPass == "" || password == "" || confirmPass == "") {
+    alert("Please fill all the fields!");
+    return;
+  }
 
   // User Password Validation
   if (password.value.length < 8) {
@@ -83,7 +88,7 @@ submitButton.addEventListener("click", function (e) {
   }
 
   // Confirm Password Validation
-  if (password.value !== confirmPasswordInput.value) {
+  if (password.value !== confirmPass.value) {
     alert("Passwords do not match.");
     confirmPasswordInput.focus();
     return;

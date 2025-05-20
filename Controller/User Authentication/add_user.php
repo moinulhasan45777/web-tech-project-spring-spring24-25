@@ -10,8 +10,6 @@
 
     if(isset($_POST['button-main'])) {
 
-
-
       // Taking Patient Medical History into a single string
       $patientMedicalHistory = "";
       for($i = 0; $i < 16; $i++){
@@ -102,7 +100,6 @@
           </script>";
           exit;
         }
-      }
 
 
       $_SESSION["user_family_medical_history"] = $familyMedicalHistory;

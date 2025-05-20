@@ -10,7 +10,6 @@ const clearButton = document.getElementById("clear-canvas");
 const canvas = document.getElementById("signature-canvas");
 const context = canvas.getContext("2d");
 const digitalSignatureInput = document.getElementById("digital-signature");
-
 function resizeCanvasToDisplaySize() {
   const rect = canvas.getBoundingClientRect();
   canvas.width = rect.width;
@@ -49,8 +48,13 @@ canvas.addEventListener("mouseleave", () => {
   drawing = false;
 });
 
+let count = 0;
 // Function to draw on the canvas
 function draw(x, y) {
+  if (count < 1) {
+    resizeCanvasToDisplaySize();
+    count++;
+  }
   context.beginPath();
   context.strokeStyle = "#000";
   context.lineWidth = 2;

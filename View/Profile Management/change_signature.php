@@ -1,3 +1,12 @@
+<?php
+
+  session_start();
+  if(!isset($_SESSION['user_email'])){
+    header('Location: forgot_pass.html');
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,140 +49,32 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main id="edit-profile-main">
-      <h1 id="heading">Edit Profile</h1>
+    <main id="change-signature-main">
+      <h1 id="heading">Digital Signature</h1>
       <form
-        id="edit-profile-form"
+        id="change-signature-form"
         method="post"
         action=""
         enctype=""
         novalidate
       >
-        <div class="input-container pro-pic-container">
-          <label>Profile Picture</label>
-          <img
-            id="profile-picture"
-            src="../../Assets/Images/sample-pro-pic.JPG"
-            alt="Profile Picture"
-          />
+        <div class="input-container">
+          <label for="digital-signature">Digital Signature</label>
+          <canvas id="signature-canvas"></canvas>
           <input
-            type="file"
-            class="change-avatar-input"
-            name="change-avatar-input"
-            id="change-avatar-input"
-          />
-          <input
-            type="button"
-            id="change-avatar"
-            class="small-button"
-            value="Upload"
-          />
-        </div>
-        <div class="input-container">
-          <label for="user-name">Full Name</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-name"
-            name="user-name"
-          />
-        </div>
-        <div class="input-container">
-          <label for="user-phone">Mobile</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-phone"
-            name="user-phone"
-          />
-        </div>
-        <div class="input-container">
-          <label for="user-email">Email</label>
-          <input
-            type="email"
-            id="user-email"
-            class="text-field"
-            name="user-email"
-          />
-        </div>
-        <div class="input-container">
-          <label for="user-blood-group">Blood Group</label>
-          <select
-            class="text-field"
-            id="user-blood-group"
-            name="user-blood-group"
-          >
-            <option value="">Select</option>
-            <option value="A+">A+</option>
-            <option value="A-">A-</option>
-            <option value="B+">B+</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="AB-">AB-</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-            <option value="Unknown">Unknown</option>
-          </select>
-        </div>
-        <div class="input-container">
-          <label for="user-dob">Date of Birth</label>
-          <input type="date" class="text-field" id="user-dob" name="user-dob" />
-        </div>
-        <div class="input-container">
-          <label for="user-address">Present Address</label>
-          <textarea
-            id="user-address"
-            class="text-area"
-            name="user-address"
-          ></textarea>
-        </div>
-        <div class="input-container">
-          <label for="user-city">City</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-city"
-            name="user-city"
-          />
-        </div>
-        <div class="input-container pro-pic-container">
-          <label>Digital Signature</label>
-          <img
+            type="hidden"
+            name="digital-signature"
             id="digital-signature"
-            src="../../Assets/Images/Profile Management/Sample Signature.png"
-            alt="Digital Signature"
           />
-          <a class="small-button" href="change_signature.html">Change</a>
-        </div>
-        <div class="input-container">
-          <label for="user-em-name">Emergency Contact Name</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-em-name"
-            name="user-em-name"
-          />
-        </div>
-        <div class="input-container">
-          <label for="user-em-relation">Emergency Contact Relation</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-em-relation"
-            name="user-em-relation"
-          />
-        </div>
-        <div class="input-container">
-          <label for="user-em-phone">Emergency Contact Number</label>
-          <input
-            type="text"
-            class="text-field"
-            id="user-em-phone"
-            name="user-em-phone"
-          />
+          <input type="button" id="clear-canvas" value="Clear" />
         </div>
 
-        <input type="submit" name="button-main" id="button-main" value="Save" />
+        <input
+          type="submit"
+          name="button-main"
+          id="button-main"
+          value="Change"
+        />
       </form>
     </main>
 
@@ -507,7 +408,6 @@
       </section>
     </footer>
 
-    <script src="../../Controller/Profile Management/edit_profile_validation.js"></script>
+    <script src="../../Controller/Profile Management/change_signature_validation.js"></script>
   </body>
 </html>
-a

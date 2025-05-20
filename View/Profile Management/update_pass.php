@@ -1,3 +1,11 @@
+<?php
+
+  session_start();
+  if(!isset($_SESSION['user_email'])){
+    header('Location: forgot_pass.html');
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -52,7 +60,7 @@
             type="password"
             id="current-pass"
             class="text-field"
-            name="user-pass"
+            name="current-pass"
             placeholder="**********"
           />
         </div>
@@ -62,7 +70,7 @@
             type="password"
             id="new-pass"
             class="text-field"
-            name="user-pass"
+            name=" new-pass"
             placeholder="**********"
           />
         </div>

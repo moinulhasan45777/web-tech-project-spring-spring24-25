@@ -1,6 +1,6 @@
 <?php
-  if(!isset($_POST['user_email'])){
-    header('Location: login.html');
+  if(!isset($_SESSION['user_email'])){
+    header('Location: forgot_pass.html');
     exit;
   }
 ?>
