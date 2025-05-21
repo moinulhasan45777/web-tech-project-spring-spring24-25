@@ -3,6 +3,16 @@ const submitButton = document.getElementById("button-main");
 const email = document.getElementById("user-email");
 const password = document.getElementById("user-pass");
 
+// Hide/Unhide Password
+const showPasswordCheckbox = document.getElementById("show-password");
+showPasswordCheckbox.addEventListener("change", function () {
+  if (showPasswordCheckbox.checked) {
+    password.type = "text";
+  } else {
+    password.type = "password";
+  }
+});
+
 // ---------------------------------------------------------
 // ----------------On Submit Input Validation---------------
 // ---------------------------------------------------------

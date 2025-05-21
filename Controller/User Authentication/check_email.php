@@ -152,31 +152,35 @@
     if(move_uploaded_file($src, $des)){
       $_SESSION['user_profile_picture'] = $_POST['user-email'] . '.' . pathinfo($_FILES['change-avatar-input']['name'], PATHINFO_EXTENSION);
     }else{
-      // BUG
+      echo "<script>alert('An Error Occurred!');
+          window.location.href = '../../View/User Authentication/signup.php';
+          </script>";
+          exit;
     }
 
 
     // Digital Signature
-    define('UPLOAD_DIR', '../../Assets/Uploads/Digital Signatures/');
+    $uploadDir = '../../Assets/Uploads/Digital Signatures/';
 	  $img = $_POST['digital-signature'];
 	  $img = str_replace('data:image/png;base64,', '', $img);
 	  $img = str_replace(' ', '+', $img);
 	  $data = base64_decode($img);
-	  $file = UPLOAD_DIR . $_POST['user-email'] . '.png';
+	  $file = $uploadDir . $_POST['user-email'] . '.png';
 	  if(file_put_contents($file, $data)){
       $_SESSION['user_digital_signature'] = $_POST['user-email'] . '.png';
     }else{
-      // BUG
+      echo "<script>alert('An Error Occurred!');
+          window.location.href = '../../View/User Authentication/signup.php';
+          </script>";
+          exit;
     }
         
         
     
-    // BUG
     if(checkExistingUser($_POST['user-email'])) {
       echo "<script>alert('Email already exists');
       window.location.href = '../../View/User Authentication/signup.php';
       </script>";
-           
       exit;
     }
 
@@ -184,7 +188,10 @@
     if(send_mail($info)) {
       header("Location: ../../View/User Authentication/verify_email.php");
     }else{
-      // BUG
+      echo "<script>alert('An Error Occurred!');
+          window.location.href = '../../View/User Authentication/signup.php';
+          </script>";
+          exit;
     }
     exit;
   } 

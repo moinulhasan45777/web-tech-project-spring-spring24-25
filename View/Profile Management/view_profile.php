@@ -136,7 +136,7 @@
           </p>
         </div>
         <a href="../Basic Billing/charge_capture.php" class="link-button">Pay Bill</a>
-        <a href="../Staff Management/staff_list.html" class="link-button">Manage Staff</a>
+        <a href="../Staff Management/staff_list.php" class="link-button">Manage Staff</a>
         <a href="edit_profile.php" class="link-button">Edit</a>
         <button type="submit" id="logout-button" name="logout-button" class="link-button">Logout</button>
       </div>

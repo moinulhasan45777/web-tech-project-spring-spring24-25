@@ -1,7 +1,7 @@
 <?php
 
   session_start();
-  // Setting prev values
+  // Setting previous values
   $name = $_SESSION['user_name'] ?? '';
   $phone = $_SESSION['user_phone'] ?? '';
   $email = $_SESSION['user_email'] ?? '';
@@ -117,6 +117,10 @@
             class="text-field"
             name="user-pass"
           />
+          <div id="show-password-container">
+            <input type="checkbox" id="show-password" value="show" />
+            <label>Hide/Unhide Password</label>
+          </div>
         </div>
         <div class="input-container">
           <label for="digital-signature">Digital Signature</label>

@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
+    header('Location: ../User Authentication/login.html');
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +31,7 @@
             <li><a href="../Landing Page/index.html">Home</a></li>
             <li><a href="../Doctor Profiles/doctors_list.html">Doctors</a></li>
             <li><a href="#">About</a></li>
-            <li class="active">
+            <li>
               <a href="../Appointment Scheduling/select_specialty.php"
                 >Book Appointment</a
               >
@@ -40,102 +48,122 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main>
-      <section id="left-pane">
-        <p id="staff" class="left-pane-text active-text">&#x2022; Staff List</p>
-      </section>
-      <section id="main-pane-staff">
-        <div class="search-and-filter-container">
-          <input type="text" id="search-bar" placeholder="Search Staff" />
-          <select id="select-specialty-dropdown">
-            <option value="Cardiology">All</option>
-            <option value="Cardiology">Cardiology</option>
-            <option value="Hematology">Hematology</option>
-            <option value="Gastroenterology">Gastroenterology</option>
-            <option value="Neurology">Neurology</option>
-            <option value="Nephrology">Nephrology</option>
-            <option value="Oncology">Oncology</option>
-            <option value="Urology">Urology</option>
-            <option value="Pulmonology">Pulmonology</option>
-            <option value="Rheumatology">Rheumatology</option>
-          </select>
+    <main id="view-profile-main">
+      <h1 id="heading">Profile</h1>
+      <div id="info-container-view">
+        <div class="input-container pro-pic-container">
+          <label class="info-label">Profile Picture</label>
+          <img
+            id="profile-picture"
+            src="../../Assets/Images/Staffs/Nurse/nurse 1.jpg"
+            alt="Profile Picture"
+          />
         </div>
-        <ul id="staff-list">
-          <a href="view_staff_profile.html">
-            <li class="main-staff-container">
-              <div class="overlay"></div>
-              <img
-                src="../../Assets/Images/Staffs/Nurse/nurse 1.jpg"
-                alt="Staff 2"
-                class="staff-picture"
-              />
-              <div class="staff-info-container">
-                <h2 class="staff-name">Sulekha Jaman</h2>
-                <p class="staff-department">Cardiology</p>
-                <p class="staff-schedule">Schedule: Morning</p>
-                <p class="staff-designation">Nurse</p>
-              </div>
-            </li>
-          </a>
-        </ul>
-      </section>
-      <section id="right-pane">
-        <h2 class="pane-heading">Leading Doctors</h2>
-        <button type="button">
-          <div class="doctor-container">
-            <div class="overlay"></div>
-            <div class="overlay"></div>
-            <img
-              src="../../Assets/Images/Doctors/doctor 1.jpg"
-              alt="Doctor 1"
-              class="doctor-picture"
-            />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Md Shah Newaz</h2>
-              <p class="doctor-specialty">Neurosurgery</p>
-              <p class="doctor-degree">
-                MBBS, BCS (Health), MS (Neurosurgery, BSMMU)
-              </p>
-            </div>
-          </div>
-        </button>
-        <button type="button">
-          <div class="doctor-container">
-            <div class="overlay"></div>
-            <img
-              src="../../Assets/Images/Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture"
-            />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </div>
-        </button>
+        <div class="input-container-view">
+          <label class="info-label" for="user-name">Name: </label>
+          <p class="info-field" id="user-name" name="user-name">Moinul Hasan</p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-phone">Mobile: </label>
+          <p class="info-field" id="user-phone" name="user-phone">
+            01746670010
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-email">Email: </label>
+          <p class="info-field" id="user-email" name="user-email">
+            moinulhasan45777@gmail.com
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="staff-department">Department: </label>
+          <p class="info-field" id="staff-department" name="staff-department">
+            Cardiology
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="staff-designation"
+            >Designation:
+          </label>
+          <p class="info-field" id="staff-designation" name="staff-designation">
+            Nurse
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="staff-schedule">Schedule: </label>
+          <p class="info-field" id="staff-schedule" name="staff-schedule">
+            Morning
+          </p>
+          <a class="small-button update-button" href="">Change</a>
+        </div>
 
-        <button type="button">
-          <div class="doctor-container">
-            <div class="overlay"></div>
-            <img
-              src="../../Assets/Images/Doctors/doctor 3.jpg"
-              alt="Doctor 3"
-              class="doctor-picture"
-            />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Prof. Dr. Md. Merajul Islam (Miraj)</h2>
-              <p class="doctor-specialty">Urology</p>
-              <p class="doctor-degree">
-                MBBS, MCPS (Surgery), MS (Urology), FACS (USA)
-              </p>
-            </div>
-          </div>
-        </button>
-      </section>
+        <div class="input-container-view">
+          <label class="info-label" for="license-expiration-date"
+            >License Expiration Date:
+          </label>
+          <p
+            class="info-field"
+            id="license-expiration-date"
+            name="license-expiration-date"
+          >
+            12/5/2027
+          </p>
+        </div>
+
+        <div class="input-container pro-pic-container">
+          <label class="info-label">Digital Signature:</label>
+          <img
+            id="digital-signature"
+            src="../../Assets/Images/Profile Management/Sample Signature.png"
+            alt="Digital Signature"
+          />
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-blood-group">Blood Group: </label>
+          <p class="info-field" id="user-blood-group" name="user-blood-group">
+            A+
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-dob">Date of Birth:</label>
+          <p class="info-field" id="user-dob" name="user-dob">23/5/2000</p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-address">Present Address:</label>
+          <p id="user-address" class="info-field" name="user-address">
+            House-10, Lane-3, Mirpur-10, Dhaka-1216
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-city">City:</label>
+          <p class="info-field" id="user-city" name="user-city">Dhaka</p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-em-name"
+            >Emergency Contact Name:</label
+          >
+          <p class="info-field" id="user-em-name" name="user-em-name">
+            Harun Or Rashid
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-em-relation"
+            >Emergency Contact Relation:</label
+          >
+          <p class="info-field" id="user-em-relation" name="user-em-relation">
+            Biological Father
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-em-phone"
+            >Emergency Contact Number:</label
+          >
+          <p class="info-field" id="user-em-phone" name="user-em-phone">
+            +8801715475440
+          </p>
+        </div>
+        <a href="edit_profile.html" class="link-button">Save</a>
+      </div>
     </main>
 
     <!-------------------------------------------------------------------------------------->
@@ -467,7 +495,6 @@
         <p id="copyright-text">Copyright &copy; 2025 Heritage Medical Center</p>
       </section>
     </footer>
-
-    <script src="../../Controller/Staff Management/staff_list_validation.js"></script>
   </body>
 </html>
+a

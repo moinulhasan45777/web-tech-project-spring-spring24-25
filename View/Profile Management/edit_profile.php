@@ -2,7 +2,7 @@
 
   session_start();
   if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
-    header('Location: forgot_pass.html');
+    header('Location: ../../View/User Authentication/login.html');
     exit;
   }
 ?>

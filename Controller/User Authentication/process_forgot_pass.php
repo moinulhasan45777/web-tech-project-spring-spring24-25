@@ -13,7 +13,7 @@
   if(isset($_POST["button-main"])) {
     if(checkExistingUser($_POST["user-email"])) {
       if(send_mail($_POST['user-email'])){
-        $_SESSION['login_email'] = $_POST['user-email'];
+        $_SESSION['user_email'] = $_POST['user-email'];
         echo "<script>alert('Password Resent link has been sent to your email. Please follow that link to reset your password!');
           window.location.href = '../../View/User Authentication/login.html';
           </script>";

@@ -71,7 +71,7 @@
 
     if(updatePass($user)){
       echo "<script>alert('Password successfully changed!<br> Please Sign in using the new password!');
-          window.location.href = '../../View/Profile Management/view_profile.html';
+          window.location.href = '../../View/Profile Management/view_profile.php';
           </script>";
           exit;
     }else{

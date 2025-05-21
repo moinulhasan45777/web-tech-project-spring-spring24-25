@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
+  if(!isset($_SESSION['user_email'])){
     header('Location: forgot_pass.html');
     exit;
   }

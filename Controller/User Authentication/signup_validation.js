@@ -11,6 +11,16 @@ const proPicture = document.getElementById("profile-picture");
 
 const allowedPictureExtensions = [".png", ".jpg", "jpeg"];
 
+// Hide/Unhide Password
+const showPasswordCheckbox = document.getElementById("show-password");
+showPasswordCheckbox.addEventListener("change", function () {
+  if (showPasswordCheckbox.checked) {
+    password.type = "text";
+  } else {
+    password.type = "password";
+  }
+});
+
 // Upload Profile Picture
 changeAvatarButton.addEventListener("click", function () {
   changeAvatarInput.click();
@@ -274,14 +284,6 @@ submitButton.addEventListener("click", function (e) {
     alert("Please enter a valid email address.");
     email.focus();
     return;
-  }
-
-  for (let i = atIndex + 1; i < dotIndex; i++) {
-    if (email.value[i] == ".") {
-      alert("Please enter a valid email address.");
-      email.focus();
-      return;
-    }
   }
 
   // User Password Validation
