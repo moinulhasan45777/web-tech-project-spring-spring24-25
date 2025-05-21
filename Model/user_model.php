@@ -26,21 +26,32 @@
 
     function checkExistingPass($user){
         $con = getConnection();
-        $sql = "select * from users where email = '{$user['email']}' AND hash = '{$user['hash']}'";
+        $sql = "select hash from users where email = '{$user['email']}'";
         $result = mysqli_query($con, $sql);
-        if(mysqli_num_rows($result) > 0){
-            return true;
+        if (mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_assoc($result);
+            if(password_verify($user['pass'], $row['hash'])){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
         }
-        return false;
     }
 
     function login($user){
         $con = getConnection();
-        $sql = "select * from users where email='{$user['email']}' and password='{$user['pass']}'";
+        $sql = "select hash from users where email = '{$user['email']}'";
         $result = mysqli_query($con, $sql);
-
-        if(mysqli_num_rows($result) == 1){
-            return true;
+        if (mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_assoc($result);
+            
+            if(password_verify($user['pass'], $row['hash'])){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }

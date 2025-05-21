@@ -20,7 +20,7 @@
     $lowerCaseCount = 0;
     $digitCount = 0;
     $specialCharacters = [ "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "[", "]", "{", "}", "|", "<", ">", "?", "/", "~", "`" ];
-    for($i = 0; $i < strlen($name); $i++){
+    for($i = 0; $i < strlen($password); $i++){
       if(in_array( $password[$i], $specialCharacters)){
         $specialCharCount++;
       }
@@ -59,10 +59,12 @@
       'threads' => 2
     ]);
 
-    $user = ['email' => $_SESSION['user_email'], 'hash' => $hash];
+    $user = ['email' => $_SESSION['login_email'], 'hash' => $hash];
 
     if(updatePass($user)){
-      echo "<script>alert('Password successfully changed!<br> Please Sign in using the new password!');
+      session_destroy();
+
+      echo "<script>alert('Password successfully changed! Please Sign in using the new password!');
           window.location.href = '../../View/User Authentication/login.html';
           </script>";
           exit;

@@ -40,5 +40,5 @@ submitButton.addEventListener("click", function (e) {
     return;
   }
 
-  form.submit();
+  form.requestSubmit(submitButton);
 });

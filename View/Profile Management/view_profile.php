@@ -1,7 +1,7 @@
 <?php
   session_start();
-  if(!isset($_SESSION['user_email'])){
-    header('Location: forgot_pass.html');
+  if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
+    header('Location: ../User Authentication/login.html');
     exit;
   }
 ?>
@@ -31,12 +31,12 @@
             <li><a href="../Doctor Profiles/doctors_list.html">Doctors</a></li>
             <li><a href="#">About</a></li>
             <li>
-              <a href="../Appointment Scheduling/select_specialty.html"
+              <a href="../Appointment Scheduling/select_specialty.php"
                 >Book Appointment</a
               >
             </li>
           </ul>
-          <a href="../Profile Management/view_profile.html"
+          <a href="../Profile Management/view_profile.php"
             ><img id="pro-pic" src="../../Assets/Images/sample-pro-pic.JPG"
           /></a>
         </div>
@@ -79,7 +79,7 @@
           <p class="info-field" id="user-pass" name="user-pass">
             **************
           </p>
-          <a class="small-button update-button" href="update_pass.html"
+          <a class="small-button update-button" href="update_pass.php"
             >Update</a
           >
         </div>
@@ -135,7 +135,10 @@
             +8801715475440
           </p>
         </div>
-        <a href="edit_profile.html" class="link-button">Edit</a>
+        <a href="../Basic Billing/charge_capture.php" class="link-button">Pay Bill</a>
+        <a href="../Staff Management/staff_list.html" class="link-button">Manage Staff</a>
+        <a href="edit_profile.php" class="link-button">Edit</a>
+        <button type="submit" id="logout-button" name="logout-button" class="link-button">Logout</button>
       </div>
     </main>
 
@@ -468,6 +471,8 @@
         <p id="copyright-text">Copyright &copy; 2025 Heritage Medical Center</p>
       </section>
     </footer>
+
+    <script src="../../Controller/Profile Management/view_profile_validation.js"></script>
   </body>
 </html>
 a

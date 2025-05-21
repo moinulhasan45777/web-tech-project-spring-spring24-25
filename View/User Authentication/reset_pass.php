@@ -1,5 +1,6 @@
 <?php
-  if(!isset($_SESSION['user_email'])){
+  session_start();
+  if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
     header('Location: forgot_pass.html');
     exit;
   }
@@ -30,7 +31,7 @@
             <li><a href="../Doctor Profiles/doctors_list.html">Doctors</a></li>
             <li><a href="#">About</a></li>
             <li>
-              <a href="../Appointment Scheduling/select_specialty.html"
+              <a href="../Appointment Scheduling/select_specialty.php"
                 >Book Appointment</a
               >
             </li>
@@ -48,7 +49,7 @@
 
     <main id="login-main">
       <img id="login-logo" src="../../Assets/Logo/main-logo-without-text.png" />
-      <form id="user-auth" method="post" action="" enctype="" novalidate>
+      <form id="user-auth" method="post" action="../../Controller/User Authentication/process_reset_pass.php" enctype="multipart/form-data" novalidate>
         <div class="input-container">
           <label for="user-pass">New password</label>
           <input

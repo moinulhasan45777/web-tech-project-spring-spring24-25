@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
+    header('Location: ../../View/User Authentication/login.html');
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +13,7 @@
     <link rel="stylesheet" href="../../Assets/general.css" />
     <link
       rel="stylesheet"
-      href="../../Assets/Appointment Scheduling/general_appointment.css" />
+      href="../../Assets/Basic Billing/basic_billing.css" />
 
     <title>HMC - Your most reliable companion</title>
   </head>
@@ -22,9 +29,13 @@
             <li><a href="../Landing Page/index.html">Home</a></li>
             <li><a href="../Doctor Profiles/doctors_list.html">Doctors</a></li>
             <li><a href="#">About</a></li>
-            <li class="active"><a href="#">Book Appointment</a></li>
+            <li>
+              <a href="../Appointment Scheduling/select_specialty.php"
+                >Book Appointment</a
+              >
+            </li>
           </ul>
-          <a href="../Profile Management/view_profile.html"
+          <a href="../Profile Management/view_profile.php"
             ><img id="pro-pic" src="../../Assets/Images/sample-pro-pic.JPG"
           /></a>
         </div>
@@ -35,377 +46,97 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main>
-      <section id="left-pane">
-        <p id="specialty" class="left-pane-text active-text">
-          &#x2022; Select Specialty
+    <main id="invoice-main">
+      <div id="invoice-heading-container">
+        <div id="company-info-container">
+          <img
+            src="../Logo/main-logo-without-text.png"
+            alt="Logo"
+            id="company-logo" />
+          <p id="company-address">
+            408/1 (Old KA 66/1) <br />
+            Kuratoli, Khilkhet <br />
+            Dhaka 1229
+          </p>
+        </div>
+        <div id="invoice-heading-number-date-container">
+          <h1 id="heading">INVOICE</h1>
+          <div id="number-date-container">
+            <p class="invoice-number-date-text">INVOICE #</p>
+            <p class="invoice-number-date-text" id="invoice-number">24856</p>
+            <p class="invoice-number-date-text">DATE:</p>
+            <p class="invoice-number-date-text" id="invoice-date">
+              12 / 05 / 2025
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="secondary-heading">Bill to:</p>
+      <div id="patient-information">
+        <p id="patient-name">Amtaz Ahmed</p>
+        <p id="patient-address">
+          52, fakirapool <br />
+          motijheel c/a, 1000 <br />
+          Dhaka
         </p>
-        <p id="doctor" class="left-pane-text remove">&#x2022; Select Doctor</p>
-      </section>
-      <section id="main-pane-specialty">
-        <input type="text" id="search-bar" placeholder="Search specialty" />
-        <ul id="specialty-list">
-          <a href="choose_doctor.html">
-            <li class="specialty-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Specialties/cardiology.jpg"
-                alt="Cardiology"
-                id="cardiology-picture"
-                class="specialty-picture" />
-              <h2 class="specialty-heading">Cardiology</h2>
-              <p class="specialty-description">Heart and blood vessels</p>
-            </li>
-          </a>
-          <a href="choose_doctor.html">
-            <li class="specialty-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Specialties/hematology.jpg"
-                alt="Hematology"
-                id="hematology-picture"
-                class="specialty-picture" />
-              <h2 class="specialty-heading">Hematology</h2>
-              <p class="specialty-description">Blood and blood disorders</p>
-            </li>
-          </a>
-          <a href="choose_doctor.html">
-            <li class="specialty-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Specialties/gastroenterology.jpg"
-                alt="Gastroenterology"
-                id="gastroenterology-picture"
-                class="specialty-picture" />
-              <h2 class="specialty-heading">Gastroenterology</h2>
-              <p class="specialty-description">Digestive system</p>
-            </li>
-          </a>
-          <a href="choose_doctor.html">
-            <li class="specialty-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Specialties/neurology.jpg"
-                alt="Neurology"
-                id="neurology-picture"
-                class="specialty-picture" />
-              <h2 class="specialty-heading">Neurology</h2>
-              <p class="specialty-description">Nervous system</p>
-            </li>
-          </a>
-          <a href="choose_doctor.html">
-            <li class="specialty-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Specialties/nephrology.jpg"
-                alt="Nephrology"
-                id="nephrology-picture"
-                class="specialty-picture" />
-              <h2 class="specialty-heading">Nephrology</h2>
-              <p class="specialty-description">Kidneys</p>
-            </li>
-          </a>
-          <a href="choose_doctor.html">
-            <li class="specialty-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Specialties/oncology.jpg"
-                alt="Oncology"
-                id="oncology-picture"
-                class="specialty-picture" />
-              <h2 class="specialty-heading">Oncology</h2>
-              <p class="specialty-description">Cancer</p>
-            </li>
-          </a>
-          <a href="choose_doctor.html">
-            <li class="specialty-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Specialties/urology.jpg"
-                alt="Urology"
-                id="urology-picture"
-                class="specialty-picture" />
-              <h2 class="specialty-heading">Urology</h2>
-              <p class="specialty-description">Urinary system</p>
-            </li>
-          </a>
-          <a href="choose_doctor.html">
-            <li class="specialty-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Specialties/pulmonology.jpg"
-                alt="Pulmonology"
-                id="pulmonology-picture"
-                class="specialty-picture" />
-              <h2 class="specialty-heading">Pulmonology</h2>
-              <p class="specialty-description">Lungs and respiratory system</p>
-            </li>
-          </a>
-          <a href="choose_doctor.html">
-            <li class="specialty-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Specialties/rheumatology.jpg"
-                alt="Rheumatology"
-                id="rheumatology-picture"
-                class="specialty-picture" />
-              <h2 class="specialty-heading">Rheumatology</h2>
-              <p class="specialty-description">Joints and connective tissues</p>
-            </li>
-          </a>
-        </ul>
-      </section>
+      </div>
+      <table id="bill" class="table">
+        <thead>
+          <tr>
+            <th>PRODUCT</th>
+            <th>CODE</th>
+            <th>PRICE</th>
+            <th>QTY</th>
+            <th>TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Lorem Ipsum Dolor</td>
+            <td>23433</td>
+            <td>$50.00</td>
+            <td>5</td>
+            <td>$250.00</td>
+          </tr>
+          <tr>
+            <td>Pellentesque id neque ligula</td>
+            <td>23433</td>
+            <td>$10.00</td>
+            <td>1</td>
+            <td>$10.00</td>
+          </tr>
+          <tr>
+            <td>Interdum et malesuada fames</td>
+            <td>23433</td>
+            <td>$25.00</td>
+            <td>3</td>
+            <td>$75.00</td>
+          </tr>
+          <tr>
+            <td>Vivamus volutpat faucibus</td>
+            <td>23433</td>
+            <td>$40.00</td>
+            <td>2</td>
+            <td>$80.00</td>
+          </tr>
+        </tbody>
+      </table>
 
-      <section id="main-pane-doctor" class="remove">
-        <input type="text" id="search-bar" placeholder="Search Doctors" />
-        <ul id="doctor-list">
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
+      <form id="insurance-calculator" method="POST" enctype="multipart/form-data" action="../../Controller/Basic Billing/process_insurance.php">
+        <div id="insurance-input-container">
+          <label for="insurance-code">Insurance Number</label>
+          <input
+            type="text"
+            id="insurance-code"
+            name="insurance-code"
+            class="text-field" />
+        </div>
 
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-
-          <li class="specialty-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </li>
-        </ul>
-      </section>
-      <section id="right-pane">
-        <h2 class="pane-heading">Leading Doctors</h2>
-        <button type="button">
-          <div class="doctor-container">
-            <div class="overlay"></div>
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 1.jpg"
-              alt="Doctor 1"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Md Shah Newaz</h2>
-              <p class="doctor-specialty">Neurosurgery</p>
-              <p class="doctor-degree">
-                MBBS, BCS (Health), MS (Neurosurgery, BSMMU)
-              </p>
-            </div>
-          </div>
-        </button>
-        <button type="button">
-          <div class="doctor-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 2.jpg"
-              alt="Doctor 2"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
-              <p class="doctor-specialty">Cardiology</p>
-              <p class="doctor-degree">
-                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
-                GI Endoscopy (Delhi)
-              </p>
-            </div>
-          </div>
-        </button>
-
-        <button type="button">
-          <div class="doctor-container">
-            <div class="overlay"></div>
-            <img
-              src="Images/Aside Doctors/doctor 3.jpg"
-              alt="Doctor 3"
-              class="doctor-picture" />
-            <div class="doctor-info-container">
-              <h2 class="doctor-name">Prof. Dr. Md. Merajul Islam (Miraj)</h2>
-              <p class="doctor-specialty">Urology</p>
-              <p class="doctor-degree">
-                MBBS, MCPS (Surgery), MS (Urology), FACS (USA)
-              </p>
-            </div>
-          </div>
-        </button>
-      </section>
+        <div id="final-cta">
+          <p id="ending-text">THANK YOU FOR YOUR VISIT</p>
+          <input type="submit" id="button-main" name="button-main" />
+        </div>
+      </form>
     </main>
 
     <!-------------------------------------------------------------------------------------->
@@ -695,6 +426,6 @@
       </section>
     </footer>
 
-    <script src="../../Controller/Appointment Scheduling/select_specialty_validation.js"></script>
+    <script src="../../Controller/Basic Billing/charge_capture_validation.js"></script>
   </body>
 </html>

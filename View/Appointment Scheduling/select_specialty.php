@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
+    header('Location: ../../View/User Authentication/login.html');
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,7 +13,8 @@
     <link rel="stylesheet" href="../../Assets/general.css" />
     <link
       rel="stylesheet"
-      href="../../Assets/Appointment Scheduling/general_appointment.css" />
+      href="../../Assets/Appointment Scheduling/general_appointment.css"
+    />
 
     <title>HMC - Your most reliable companion</title>
   </head>
@@ -24,7 +32,7 @@
             <li><a href="#">About</a></li>
             <li class="active"><a href="#">Book Appointment</a></li>
           </ul>
-          <a href="../Profile Management/view_profile.html"
+          <a href="../Profile Management/view_profile.php"
             ><img id="pro-pic" src="../../Assets/Images/sample-pro-pic.JPG"
           /></a>
         </div>
@@ -37,126 +45,134 @@
 
     <main>
       <section id="left-pane">
-        <p id="specialty" class="left-pane-text">&#x2022; Select Specialty</p>
-        <p id="doctor" class="left-pane-text">&#x2022; Select Doctor</p>
-        <p id="schedule" class="left-pane-text active-text">
-          &#x2022; Pick date
+        <p id="specialty" class="left-pane-text active-text">
+          &#x2022; Select Specialty
         </p>
+        <p id="doctor" class="left-pane-text remove">&#x2022; Select Doctor</p>
       </section>
-      <section id="main-pane-schedule">
-        <ul id="schedule-list">
-          <a href="">
-            <li class="schedule-container">
+      <section id="main-pane-specialty">
+        <input type="text" id="search-bar" placeholder="Search specialty" />
+        <ul id="specialty-list">
+          <a href="choose_doctor.php">
+            <li class="specialty-container">
               <div class="overlay"></div>
               <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture" />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
+                src="../../Assets/Images/Specialties/cardiology.jpg"
+                alt="Cardiology"
+                id="cardiology-picture"
+                class="specialty-picture"
+              />
+              <h2 class="specialty-heading">Cardiology</h2>
+              <p class="specialty-description">Heart and blood vessels</p>
             </li>
           </a>
-          <a href="">
-            <li class="schedule-container">
+          <a href="choose_doctor.php">
+            <li class="specialty-container">
               <div class="overlay"></div>
               <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture" />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
+                src="../../Assets/Images/Specialties/hematology.jpg"
+                alt="Hematology"
+                id="hematology-picture"
+                class="specialty-picture"
+              />
+              <h2 class="specialty-heading">Hematology</h2>
+              <p class="specialty-description">Blood and blood disorders</p>
             </li>
           </a>
-          <a href="">
-            <li class="schedule-container">
+          <a href="choose_doctor.php">
+            <li class="specialty-container">
               <div class="overlay"></div>
               <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture" />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
+                src="../../Assets/Images/Specialties/gastroenterology.jpg"
+                alt="Gastroenterology"
+                id="gastroenterology-picture"
+                class="specialty-picture"
+              />
+              <h2 class="specialty-heading">Gastroenterology</h2>
+              <p class="specialty-description">Digestive system</p>
             </li>
           </a>
-          <a href="">
-            <li class="schedule-container">
+          <a href="choose_doctor.php">
+            <li class="specialty-container">
               <div class="overlay"></div>
               <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture" />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
+                src="../../Assets/Images/Specialties/neurology.jpg"
+                alt="Neurology"
+                id="neurology-picture"
+                class="specialty-picture"
+              />
+              <h2 class="specialty-heading">Neurology</h2>
+              <p class="specialty-description">Nervous system</p>
             </li>
           </a>
-          <a href="">
-            <li class="schedule-container">
+          <a href="choose_doctor.php">
+            <li class="specialty-container">
               <div class="overlay"></div>
               <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture" />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
+                src="../../Assets/Images/Specialties/nephrology.jpg"
+                alt="Nephrology"
+                id="nephrology-picture"
+                class="specialty-picture"
+              />
+              <h2 class="specialty-heading">Nephrology</h2>
+              <p class="specialty-description">Kidneys</p>
             </li>
           </a>
-          <a href="">
-            <li class="schedule-container">
+          <a href="choose_doctor.php">
+            <li class="specialty-container">
               <div class="overlay"></div>
               <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture" />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
+                src="../../Assets/Images/Specialties/oncology.jpg"
+                alt="Oncology"
+                id="oncology-picture"
+                class="specialty-picture"
+              />
+              <h2 class="specialty-heading">Oncology</h2>
+              <p class="specialty-description">Cancer</p>
             </li>
           </a>
-          <a href="">
-            <li class="schedule-container">
+          <a href="choose_doctor.php">
+            <li class="specialty-container">
               <div class="overlay"></div>
               <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture" />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
+                src="../../Assets/Images/Specialties/urology.jpg"
+                alt="Urology"
+                id="urology-picture"
+                class="specialty-picture"
+              />
+              <h2 class="specialty-heading">Urology</h2>
+              <p class="specialty-description">Urinary system</p>
             </li>
           </a>
-          <a href="">
-            <li class="schedule-container">
+          <a href="choose_doctor.php">
+            <li class="specialty-container">
               <div class="overlay"></div>
               <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture" />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
+                src="../../Assets/Images/Specialties/pulmonology.jpg"
+                alt="Pulmonology"
+                id="pulmonology-picture"
+                class="specialty-picture"
+              />
+              <h2 class="specialty-heading">Pulmonology</h2>
+              <p class="specialty-description">Lungs and respiratory system</p>
             </li>
           </a>
-          <a href="">
-            <li class="schedule-container">
+          <a href="choose_doctor.php">
+            <li class="specialty-container">
               <div class="overlay"></div>
               <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture" />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
-            </li>
-          </a>
-          <a href="">
-            <li class="schedule-container">
-              <div class="overlay"></div>
-              <img
-                src="Images/Schedule/clock.jpg"
-                alt="Appointment Time"
-                class="specialty-picture" />
-              <h2 class="schedule-heading">Date</h2>
-              <p class="schedule-date">11/5/25</p>
+                src="../../Assets/Images/Specialties/rheumatology.jpg"
+                alt="Rheumatology"
+                id="rheumatology-picture"
+                class="specialty-picture"
+              />
+              <h2 class="specialty-heading">Rheumatology</h2>
+              <p class="specialty-description">Joints and connective tissues</p>
             </li>
           </a>
         </ul>
       </section>
+
       <section id="right-pane">
         <h2 class="pane-heading">Leading Doctors</h2>
         <button type="button">
@@ -164,9 +180,10 @@
             <div class="overlay"></div>
             <div class="overlay"></div>
             <img
-              src="Images/Aside Doctors/doctor 1.jpg"
+              src="../../Assets/Images/Aside Doctors/doctor 1.jpg"
               alt="Doctor 1"
-              class="doctor-picture" />
+              class="doctor-picture"
+            />
             <div class="doctor-info-container">
               <h2 class="doctor-name">Dr. Md Shah Newaz</h2>
               <p class="doctor-specialty">Neurosurgery</p>
@@ -180,9 +197,10 @@
           <div class="doctor-container">
             <div class="overlay"></div>
             <img
-              src="Images/Aside Doctors/doctor 2.jpg"
+              src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
               alt="Doctor 2"
-              class="doctor-picture" />
+              class="doctor-picture"
+            />
             <div class="doctor-info-container">
               <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
               <p class="doctor-specialty">Cardiology</p>
@@ -198,9 +216,10 @@
           <div class="doctor-container">
             <div class="overlay"></div>
             <img
-              src="Images/Aside Doctors/doctor 3.jpg"
+              src="../../Assets/Images/Aside Doctors/doctor 3.jpg"
               alt="Doctor 3"
-              class="doctor-picture" />
+              class="doctor-picture"
+            />
             <div class="doctor-info-container">
               <h2 class="doctor-name">Prof. Dr. Md. Merajul Islam (Miraj)</h2>
               <p class="doctor-specialty">Urology</p>
@@ -210,9 +229,6 @@
             </div>
           </div>
         </button>
-
-        <!-- TODO TODO TODO TODO TODO-->
-        <!-- Add one more doctor card -->
       </section>
     </main>
 
@@ -230,10 +246,12 @@
               class="footer-icon"
               data-name="location-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 14.64 18.35">
+              viewBox="0 0 14.64 18.35"
+            >
               <g>
                 <path
-                  d="m7.32,0C3.28,0,0,3.28,0,7.32c0,2.95,3.9,7.94,6.01,10.43.69.81,1.94.81,2.63,0,2.11-2.48,6.01-7.48,6.01-10.43C14.64,3.28,11.36,0,7.32,0Zm0,8.72c-.96,0-1.75-.78-1.75-1.75s.78-1.75,1.75-1.75,1.75.78,1.75,1.75-.78,1.75-1.75,1.75Z" />
+                  d="m7.32,0C3.28,0,0,3.28,0,7.32c0,2.95,3.9,7.94,6.01,10.43.69.81,1.94.81,2.63,0,2.11-2.48,6.01-7.48,6.01-10.43C14.64,3.28,11.36,0,7.32,0Zm0,8.72c-.96,0-1.75-.78-1.75-1.75s.78-1.75,1.75-1.75,1.75.78,1.75,1.75-.78,1.75-1.75,1.75Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text-nonhover">
@@ -245,10 +263,12 @@
               class="footer-icon"
               data-name="phone-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 13.29 19.61">
+              viewBox="0 0 13.29 19.61"
+            >
               <g id="ELEMENTS">
                 <path
-                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z" />
+                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text">01744-446-666</p>
@@ -256,13 +276,16 @@
               class="footer-icon"
               data-name="mail-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 19.39 14.93">
+              viewBox="0 0 19.39 14.93"
+            >
               <g id="ELEMENTS">
                 <g>
                   <path
-                    d="m19.2,1.38s-.05.07-.08.11l-6.62,7.51c-.71.81-1.73,1.27-2.81,1.27-1.07,0-2.1-.46-2.81-1.27L.18,1.39c-.12.28-.18.58-.18.9v8.61c0,2.22,1.8,4.03,4.03,4.03h11.34c2.22,0,4.03-1.8,4.03-4.03V2.29c0-.32-.07-.63-.19-.91Z" />
+                    d="m19.2,1.38s-.05.07-.08.11l-6.62,7.51c-.71.81-1.73,1.27-2.81,1.27-1.07,0-2.1-.46-2.81-1.27L.18,1.39c-.12.28-.18.58-.18.9v8.61c0,2.22,1.8,4.03,4.03,4.03h11.34c2.22,0,4.03-1.8,4.03-4.03V2.29c0-.32-.07-.63-.19-.91Z"
+                  />
                   <path
-                    d="m8.39,7.66c.33.38.79.59,1.3.59s.97-.21,1.3-.59L17.61.15s.05-.05.08-.07c-.19-.05-.39-.08-.59-.08H2.28c-.2,0-.39.03-.58.08l6.69,7.59Z" />
+                    d="m8.39,7.66c.33.38.79.59,1.3.59s.97-.21,1.3-.59L17.61.15s.05-.05.08-.07c-.19-.05-.39-.08-.59-.08H2.28c-.2,0-.39.03-.58.08l6.69,7.59Z"
+                  />
                 </g>
               </g>
             </svg>
@@ -276,10 +299,12 @@
               class="footer-icon"
               data-name="location"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 14.64 18.35">
+              viewBox="0 0 14.64 18.35"
+            >
               <g>
                 <path
-                  d="m7.32,0C3.28,0,0,3.28,0,7.32c0,2.95,3.9,7.94,6.01,10.43.69.81,1.94.81,2.63,0,2.11-2.48,6.01-7.48,6.01-10.43C14.64,3.28,11.36,0,7.32,0Zm0,8.72c-.96,0-1.75-.78-1.75-1.75s.78-1.75,1.75-1.75,1.75.78,1.75,1.75-.78,1.75-1.75,1.75Z" />
+                  d="m7.32,0C3.28,0,0,3.28,0,7.32c0,2.95,3.9,7.94,6.01,10.43.69.81,1.94.81,2.63,0,2.11-2.48,6.01-7.48,6.01-10.43C14.64,3.28,11.36,0,7.32,0Zm0,8.72c-.96,0-1.75-.78-1.75-1.75s.78-1.75,1.75-1.75,1.75.78,1.75,1.75-.78,1.75-1.75,1.75Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text-nonhover">
@@ -291,10 +316,12 @@
               class="footer-icon"
               data-name="phone-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 13.29 19.61">
+              viewBox="0 0 13.29 19.61"
+            >
               <g id="ELEMENTS">
                 <path
-                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z" />
+                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text">01354-777-333</p>
@@ -302,10 +329,12 @@
               class="footer-icon"
               data-name="phone-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 13.29 19.61">
+              viewBox="0 0 13.29 19.61"
+            >
               <g id="ELEMENTS">
                 <path
-                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z" />
+                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text">01533-544-211</p>
@@ -313,13 +342,16 @@
               class="footer-icon"
               data-name="mail-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 19.39 14.93">
+              viewBox="0 0 19.39 14.93"
+            >
               <g id="ELEMENTS">
                 <g>
                   <path
-                    d="m19.2,1.38s-.05.07-.08.11l-6.62,7.51c-.71.81-1.73,1.27-2.81,1.27-1.07,0-2.1-.46-2.81-1.27L.18,1.39c-.12.28-.18.58-.18.9v8.61c0,2.22,1.8,4.03,4.03,4.03h11.34c2.22,0,4.03-1.8,4.03-4.03V2.29c0-.32-.07-.63-.19-.91Z" />
+                    d="m19.2,1.38s-.05.07-.08.11l-6.62,7.51c-.71.81-1.73,1.27-2.81,1.27-1.07,0-2.1-.46-2.81-1.27L.18,1.39c-.12.28-.18.58-.18.9v8.61c0,2.22,1.8,4.03,4.03,4.03h11.34c2.22,0,4.03-1.8,4.03-4.03V2.29c0-.32-.07-.63-.19-.91Z"
+                  />
                   <path
-                    d="m8.39,7.66c.33.38.79.59,1.3.59s.97-.21,1.3-.59L17.61.15s.05-.05.08-.07c-.19-.05-.39-.08-.59-.08H2.28c-.2,0-.39.03-.58.08l6.69,7.59Z" />
+                    d="m8.39,7.66c.33.38.79.59,1.3.59s.97-.21,1.3-.59L17.61.15s.05-.05.08-.07c-.19-.05-.39-.08-.59-.08H2.28c-.2,0-.39.03-.58.08l6.69,7.59Z"
+                  />
                 </g>
               </g>
             </svg>
@@ -333,10 +365,12 @@
               class="footer-icon"
               data-name="location"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 14.64 18.35">
+              viewBox="0 0 14.64 18.35"
+            >
               <g>
                 <path
-                  d="m7.32,0C3.28,0,0,3.28,0,7.32c0,2.95,3.9,7.94,6.01,10.43.69.81,1.94.81,2.63,0,2.11-2.48,6.01-7.48,6.01-10.43C14.64,3.28,11.36,0,7.32,0Zm0,8.72c-.96,0-1.75-.78-1.75-1.75s.78-1.75,1.75-1.75,1.75.78,1.75,1.75-.78,1.75-1.75,1.75Z" />
+                  d="m7.32,0C3.28,0,0,3.28,0,7.32c0,2.95,3.9,7.94,6.01,10.43.69.81,1.94.81,2.63,0,2.11-2.48,6.01-7.48,6.01-10.43C14.64,3.28,11.36,0,7.32,0Zm0,8.72c-.96,0-1.75-.78-1.75-1.75s.78-1.75,1.75-1.75,1.75.78,1.75,1.75-.78,1.75-1.75,1.75Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text-nonhover">
@@ -348,10 +382,12 @@
               class="footer-icon"
               data-name="phone-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 13.29 19.61">
+              viewBox="0 0 13.29 19.61"
+            >
               <g id="ELEMENTS">
                 <path
-                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z" />
+                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text">01843-390-224</p>
@@ -359,10 +395,12 @@
               class="footer-icon"
               data-name="phone-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 13.29 19.61">
+              viewBox="0 0 13.29 19.61"
+            >
               <g id="ELEMENTS">
                 <path
-                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z" />
+                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text">01624-999-329</p>
@@ -370,13 +408,16 @@
               class="footer-icon"
               data-name="mail-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 19.39 14.93">
+              viewBox="0 0 19.39 14.93"
+            >
               <g id="ELEMENTS">
                 <g>
                   <path
-                    d="m19.2,1.38s-.05.07-.08.11l-6.62,7.51c-.71.81-1.73,1.27-2.81,1.27-1.07,0-2.1-.46-2.81-1.27L.18,1.39c-.12.28-.18.58-.18.9v8.61c0,2.22,1.8,4.03,4.03,4.03h11.34c2.22,0,4.03-1.8,4.03-4.03V2.29c0-.32-.07-.63-.19-.91Z" />
+                    d="m19.2,1.38s-.05.07-.08.11l-6.62,7.51c-.71.81-1.73,1.27-2.81,1.27-1.07,0-2.1-.46-2.81-1.27L.18,1.39c-.12.28-.18.58-.18.9v8.61c0,2.22,1.8,4.03,4.03,4.03h11.34c2.22,0,4.03-1.8,4.03-4.03V2.29c0-.32-.07-.63-.19-.91Z"
+                  />
                   <path
-                    d="m8.39,7.66c.33.38.79.59,1.3.59s.97-.21,1.3-.59L17.61.15s.05-.05.08-.07c-.19-.05-.39-.08-.59-.08H2.28c-.2,0-.39.03-.58.08l6.69,7.59Z" />
+                    d="m8.39,7.66c.33.38.79.59,1.3.59s.97-.21,1.3-.59L17.61.15s.05-.05.08-.07c-.19-.05-.39-.08-.59-.08H2.28c-.2,0-.39.03-.58.08l6.69,7.59Z"
+                  />
                 </g>
               </g>
             </svg>
@@ -390,10 +431,12 @@
               class="footer-icon"
               data-name="location"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 14.64 18.35">
+              viewBox="0 0 14.64 18.35"
+            >
               <g>
                 <path
-                  d="m7.32,0C3.28,0,0,3.28,0,7.32c0,2.95,3.9,7.94,6.01,10.43.69.81,1.94.81,2.63,0,2.11-2.48,6.01-7.48,6.01-10.43C14.64,3.28,11.36,0,7.32,0Zm0,8.72c-.96,0-1.75-.78-1.75-1.75s.78-1.75,1.75-1.75,1.75.78,1.75,1.75-.78,1.75-1.75,1.75Z" />
+                  d="m7.32,0C3.28,0,0,3.28,0,7.32c0,2.95,3.9,7.94,6.01,10.43.69.81,1.94.81,2.63,0,2.11-2.48,6.01-7.48,6.01-10.43C14.64,3.28,11.36,0,7.32,0Zm0,8.72c-.96,0-1.75-.78-1.75-1.75s.78-1.75,1.75-1.75,1.75.78,1.75,1.75-.78,1.75-1.75,1.75Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text-nonhover">
@@ -405,10 +448,12 @@
               class="footer-icon"
               data-name="phone-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 13.29 19.61">
+              viewBox="0 0 13.29 19.61"
+            >
               <g id="ELEMENTS">
                 <path
-                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z" />
+                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text">01922-334-455</p>
@@ -416,10 +461,12 @@
               class="footer-icon"
               data-name="phone-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 13.29 19.61">
+              viewBox="0 0 13.29 19.61"
+            >
               <g id="ELEMENTS">
                 <path
-                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z" />
+                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text">01999-399-234</p>
@@ -427,13 +474,16 @@
               class="footer-icon"
               data-name="mail-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 19.39 14.93">
+              viewBox="0 0 19.39 14.93"
+            >
               <g id="ELEMENTS">
                 <g>
                   <path
-                    d="m19.2,1.38s-.05.07-.08.11l-6.62,7.51c-.71.81-1.73,1.27-2.81,1.27-1.07,0-2.1-.46-2.81-1.27L.18,1.39c-.12.28-.18.58-.18.9v8.61c0,2.22,1.8,4.03,4.03,4.03h11.34c2.22,0,4.03-1.8,4.03-4.03V2.29c0-.32-.07-.63-.19-.91Z" />
+                    d="m19.2,1.38s-.05.07-.08.11l-6.62,7.51c-.71.81-1.73,1.27-2.81,1.27-1.07,0-2.1-.46-2.81-1.27L.18,1.39c-.12.28-.18.58-.18.9v8.61c0,2.22,1.8,4.03,4.03,4.03h11.34c2.22,0,4.03-1.8,4.03-4.03V2.29c0-.32-.07-.63-.19-.91Z"
+                  />
                   <path
-                    d="m8.39,7.66c.33.38.79.59,1.3.59s.97-.21,1.3-.59L17.61.15s.05-.05.08-.07c-.19-.05-.39-.08-.59-.08H2.28c-.2,0-.39.03-.58.08l6.69,7.59Z" />
+                    d="m8.39,7.66c.33.38.79.59,1.3.59s.97-.21,1.3-.59L17.61.15s.05-.05.08-.07c-.19-.05-.39-.08-.59-.08H2.28c-.2,0-.39.03-.58.08l6.69,7.59Z"
+                  />
                 </g>
               </g>
             </svg>
@@ -447,10 +497,12 @@
               class="footer-icon"
               data-name="location"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 14.64 18.35">
+              viewBox="0 0 14.64 18.35"
+            >
               <g>
                 <path
-                  d="m7.32,0C3.28,0,0,3.28,0,7.32c0,2.95,3.9,7.94,6.01,10.43.69.81,1.94.81,2.63,0,2.11-2.48,6.01-7.48,6.01-10.43C14.64,3.28,11.36,0,7.32,0Zm0,8.72c-.96,0-1.75-.78-1.75-1.75s.78-1.75,1.75-1.75,1.75.78,1.75,1.75-.78,1.75-1.75,1.75Z" />
+                  d="m7.32,0C3.28,0,0,3.28,0,7.32c0,2.95,3.9,7.94,6.01,10.43.69.81,1.94.81,2.63,0,2.11-2.48,6.01-7.48,6.01-10.43C14.64,3.28,11.36,0,7.32,0Zm0,8.72c-.96,0-1.75-.78-1.75-1.75s.78-1.75,1.75-1.75,1.75.78,1.75,1.75-.78,1.75-1.75,1.75Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text-nonhover">
@@ -462,10 +514,12 @@
               class="footer-icon"
               data-name="phone-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 13.29 19.61">
+              viewBox="0 0 13.29 19.61"
+            >
               <g id="ELEMENTS">
                 <path
-                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z" />
+                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text">01733-293-191</p>
@@ -473,10 +527,12 @@
               class="footer-icon"
               data-name="phone-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 13.29 19.61">
+              viewBox="0 0 13.29 19.61"
+            >
               <g id="ELEMENTS">
                 <path
-                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z" />
+                  d="m10.9,0H2.4C1.07,0,0,1.07,0,2.4v14.82c0,1.32,1.07,2.4,2.4,2.4h8.5c1.32,0,2.4-1.07,2.4-2.4V2.4c0-1.32-1.07-2.4-2.4-2.4Zm-3.2,17.73h-2.09c-.64,0-1.15-.51-1.15-1.15s.51-1.15,1.15-1.15h2.09c.64,0,1.15.51,1.15,1.15s-.51,1.15-1.15,1.15Z"
+                />
               </g>
             </svg>
             <p class="footer-info-text">01511-291-133</p>
@@ -484,13 +540,16 @@
               class="footer-icon"
               data-name="mail-icon"
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 19.39 14.93">
+              viewBox="0 0 19.39 14.93"
+            >
               <g id="ELEMENTS">
                 <g>
                   <path
-                    d="m19.2,1.38s-.05.07-.08.11l-6.62,7.51c-.71.81-1.73,1.27-2.81,1.27-1.07,0-2.1-.46-2.81-1.27L.18,1.39c-.12.28-.18.58-.18.9v8.61c0,2.22,1.8,4.03,4.03,4.03h11.34c2.22,0,4.03-1.8,4.03-4.03V2.29c0-.32-.07-.63-.19-.91Z" />
+                    d="m19.2,1.38s-.05.07-.08.11l-6.62,7.51c-.71.81-1.73,1.27-2.81,1.27-1.07,0-2.1-.46-2.81-1.27L.18,1.39c-.12.28-.18.58-.18.9v8.61c0,2.22,1.8,4.03,4.03,4.03h11.34c2.22,0,4.03-1.8,4.03-4.03V2.29c0-.32-.07-.63-.19-.91Z"
+                  />
                   <path
-                    d="m8.39,7.66c.33.38.79.59,1.3.59s.97-.21,1.3-.59L17.61.15s.05-.05.08-.07c-.19-.05-.39-.08-.59-.08H2.28c-.2,0-.39.03-.58.08l6.69,7.59Z" />
+                    d="m8.39,7.66c.33.38.79.59,1.3.59s.97-.21,1.3-.59L17.61.15s.05-.05.08-.07c-.19-.05-.39-.08-.59-.08H2.28c-.2,0-.39.03-.58.08l6.69,7.59Z"
+                  />
                 </g>
               </g>
             </svg>
@@ -503,6 +562,6 @@
       </section>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../../Controller/Appointment Scheduling/select_specialty_validation.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@
 
   if (isset($_POST['button-main'])) {
     $allowedPictureExtensions = ["png", "jpg", "jpeg"];
-    $name = $_POST['user-name'];
+    $name = trim($_POST['user-name']);
     $email = $_POST['user-email'];
     $password = $_POST['user-pass'];
     $phone = $_POST['user-phone'];
@@ -113,7 +113,15 @@
 
     // Profile Picture Validation
     if(!in_array($proPicExtension, $allowedPictureExtensions)){
-      echo "<script>alert('Invalid Profile Picture');
+      echo "<script>alert('Invalid Digital Signature');
+          window.location.href = '../../View/User Authentication/signup.php';
+          </script>";
+          exit;
+    }
+
+    // Digital Signature Validation
+    if(!isset($_POST['digital-signature'])){
+      echo "<script>alert('Digital Signature is required!');
           window.location.href = '../../View/User Authentication/signup.php';
           </script>";
           exit;
@@ -164,13 +172,13 @@
         
     
     // BUG
-    // if(checkExistingUser($_POST['user-email'])) {
-    //   echo "<script>alert('Email already exists');
-    //   window.location.href = 'signup.php';
-    //   </script>";
+    if(checkExistingUser($_POST['user-email'])) {
+      echo "<script>alert('Email already exists');
+      window.location.href = '../../View/User Authentication/signup.php';
+      </script>";
            
-    //   exit;
-    // }
+      exit;
+    }
 
     // Sending Verification Code
     if(send_mail($info)) {

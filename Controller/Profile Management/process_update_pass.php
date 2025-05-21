@@ -20,7 +20,7 @@
     $lowerCaseCount = 0;
     $digitCount = 0;
     $specialCharacters = [ "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "[", "]", "{", "}", "|", "<", ">", "?", "/", "~", "`" ];
-    for($i = 0; $i < strlen($name); $i++){
+    for($i = 0; $i < strlen($password); $i++){
       if(in_array( $password[$i], $specialCharacters)){
         $specialCharCount++;
       }
@@ -45,7 +45,7 @@
           exit;
     }
 
-    if($password != $passwordConfirm){
+    if($password != $confirmPass){
       echo "<script>alert('Password didn't match!');
           window.location.href = '../../View/Profile Management/update_pass.php';
           </script>";
@@ -59,15 +59,8 @@
       'threads' => 2
     ]);
 
-    // Current Password Hashing
-    $previousHash = password_hash($previousPass, PASSWORD_ARGON2ID, [
-      'memory_cost' => 1 << 17,
-      'time_cost' => 4,
-      'threads' => 2
-    ]);
-
-    $currentUser = ['email' => $_SESSION['user_email'], 'hash' => $previousHash];
-    $user = ['email' => $_SESSION['user_email'], 'hash' => $hash];
+    $currentUser = ['email' => $_COOKIE['login_email'], 'pass' => $previousPass];
+    $user = ['email' => $_COOKIE['login_email'], 'hash' => $hash];
 
     if(!checkExistingPass($currentUser)){
       echo "<script>alert('Invalid current password!');
@@ -87,6 +80,5 @@
           </script>";
           exit;
     }
-
   }
 ?>

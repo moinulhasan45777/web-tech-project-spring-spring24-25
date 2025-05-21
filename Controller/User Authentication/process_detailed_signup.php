@@ -8,12 +8,12 @@
     $city = trim($_POST['user-city']);
     $emName = trim($_POST['user-em-name']);
     $emRelation = trim($_POST['user-em-relation']);
-    $emNumber = $_POST['user-em-phone'];
+    $emPhone = $_POST['user-em-phone'];
 
     // Check if any field is empty
     if($bg == "Select" || $dob == "" || $address == "" || $city == "") {
       echo "<script>alert('Please Fill all the fields!');
-        window.location.href = '../../View/User Authentication/signup.php';
+        window.location.href = '../../View/User Authentication/detailed_signup.php';
         </script>";
         exit;
     }
@@ -22,7 +22,7 @@
     for($i = 0; $i < strlen($city); $i++){
       if(($city[$i] < 'A' || $city[$i] > 'Z') && ($city[$i] < 'a' || $city[$i] > 'z') && $city[$i] != '.' && $city[$i] != '-' && $city[$i] != ' ' ){
         echo "<script>alert('Invalid City');
-          window.location.href = '../../View/User Authentication/signup.php';
+          window.location.href = '../../View/User Authentication/detailed_signup.php';
           </script>";
           exit;
       }
@@ -32,7 +32,7 @@
     for($i = 0; $i < strlen($emName); $i++){
       if(($emName[$i] < 'A' || $emName[$i] > 'Z') && ($emName[$i] < 'a' || $emName[$i] > 'z') && $emName[$i] != '.' && $emName[$i] != '-' && $emName[$i] != ' ' ){
         echo "<script>alert('Invalid Name');
-          window.location.href = '../../View/User Authentication/signup.php';
+          window.location.href = '../../View/User Authentication/detailed_signup.php';
           </script>";
           exit;
       }
@@ -42,7 +42,7 @@
     for($i = 0; $i < strlen($emRelation); $i++){
       if(($emRelation[$i] < 'A' || $emRelation[$i] > 'Z') && ($emRelation[$i] < 'a' || $emRelation[$i] > 'z') && $emRelation[$i] != '.' && $emRelation[$i] != '-' && $emRelation[$i] != ' ' ){
         echo "<script>alert('Invalid Relation');
-          window.location.href = '../../View/User Authentication/signup.php';
+          window.location.href = '../../View/User Authentication/detailed_signup.php';
           </script>";
           exit;
       }
@@ -52,7 +52,7 @@
     // Emergency Phone Validation
     if(($emPhone[0] == '+' && strlen($emPhone) != 14) || ($emPhone[0] != '+' && strlen($emPhone) != 11)){
       echo "<script>alert('Invalid Phone Number');
-          window.location.href = '../../View/User Authentication/signup.php';
+          window.location.href = '../../View/User Authentication/detailed_signup.php';
           </script>";
           exit;
     }
@@ -64,7 +64,7 @@
 
       if($emPhone[$i] < '0' || $emPhone[$i] > '9'){
         echo "<script>alert('Invalid Phone Number');
-          window.location.href = '../../View/User Authentication/signup.php';
+          window.location.href = '../../View/User Authentication/detailed_signup.php';
           </script>";
           exit;
       }

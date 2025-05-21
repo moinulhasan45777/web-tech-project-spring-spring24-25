@@ -24,6 +24,12 @@ form {
   margin-bottom: 2rem;
 }
 
+.input-container-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 label {
   padding-left: 0.1rem;
   font-size: 1.3rem;

@@ -1,8 +1,7 @@
 <?php
-
   session_start();
-  if(!isset($_SESSION['user_email'])){
-    header('Location: forgot_pass.html');
+  if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
+    header('Location: ../../View/User Authentication/login.html');
     exit;
   }
 ?>
@@ -33,12 +32,12 @@
             <li><a href="../Doctor Profiles/doctors_list.html">Doctors</a></li>
             <li><a href="#">About</a></li>
             <li>
-              <a href="../Appointment Scheduling/select_specialty.html"
+              <a href="../Appointment Scheduling/select_specialty.php"
                 >Book Appointment</a
               >
             </li>
           </ul>
-          <a href="../Profile Management/view_profile.html"
+          <a href="../Profile Management/view_profile.php"
             ><img id="pro-pic" src="../../Assets/Images/sample-pro-pic.JPG"
           /></a>
         </div>

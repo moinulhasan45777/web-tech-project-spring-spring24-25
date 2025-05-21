@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../Assets/general.css" />
     <link
       rel="stylesheet"
-      href="../../Assets/Profile Management/profile_management.css"
+      href="../../Assets/Appointment Scheduling/general_appointment.css"
     />
 
     <title>HMC - Your most reliable companion</title>
@@ -30,11 +30,7 @@
             <li><a href="../Landing Page/index.html">Home</a></li>
             <li><a href="../Doctor Profiles/doctors_list.html">Doctors</a></li>
             <li><a href="#">About</a></li>
-            <li>
-              <a href="../Appointment Scheduling/select_specialty.php"
-                >Book Appointment</a
-              >
-            </li>
+            <li class="active"><a href="#">Book Appointment</a></li>
           </ul>
           <a href="../Profile Management/view_profile.php"
             ><img id="pro-pic" src="../../Assets/Images/sample-pro-pic.JPG"
@@ -47,50 +43,198 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main id="update-pass-main">
-      <img
-        id="update-pass-logo"
-        src="../../Assets/Logo/main-logo-without-text.png"
-      />
-      <form id="user-auth" method="post" action="../../Controller/Profile Management/process_update_pass.php" enctype="multipart/form-data"" novalidate>
-        <div class="input-container">
-          <label for="user-pass">Current Password</label>
-          <input
-            type="password"
-            id="current-pass"
-            class="text-field"
-            name="current-pass"
-            placeholder="**********"
-          />
-        </div>
-        <div class="input-container">
-          <label for="user-pass">New password</label>
-          <input
-            type="password"
-            id="new-pass"
-            class="text-field"
-            name=" new-pass"
-            placeholder="**********"
-          />
-        </div>
-        <div class="input-container">
-          <label for="user-pass">Confirm new password</label>
-          <input
-            type="password"
-            id="user-pass-confirm"
-            class="text-field"
-            name="user-pass-confirm"
-            placeholder="**********"
-          />
-        </div>
+    <main>
+      <section id="left-pane">
+        <p id="specialty" class="left-pane-text">&#x2022; Select Specialty</p>
+        <p id="doctor" class="left-pane-text">&#x2022; Select Doctor</p>
+        <p id="schedule" class="left-pane-text active-text">
+          &#x2022; Pick date
+        </p>
+      </section>
+      <section id="main-pane-schedule">
+        <ul id="schedule-list">
+          <a href="">
+            <li class="schedule-container">
+              <div class="overlay"></div>
+              <img
+                src="../../Assets/Images/Schedule/clock.jpg"
+                alt="Appointment Time"
+                class="specialty-picture"
+              />
+              <h2 class="schedule-heading">Date</h2>
+              <p class="schedule-date">11/5/25</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="schedule-container">
+              <div class="overlay"></div>
+              <img
+                src="../../Assets/Images/Schedule/clock.jpg"
+                alt="Appointment Time"
+                class="specialty-picture"
+              />
+              <h2 class="schedule-heading">Date</h2>
+              <p class="schedule-date">11/5/25</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="schedule-container">
+              <div class="overlay"></div>
+              <img
+                src="../../Assets/Images/Schedule/clock.jpg"
+                alt="Appointment Time"
+                class="specialty-picture"
+              />
+              <h2 class="schedule-heading">Date</h2>
+              <p class="schedule-date">11/5/25</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="schedule-container">
+              <div class="overlay"></div>
+              <img
+                src="../../Assets/Images/Schedule/clock.jpg"
+                alt="Appointment Time"
+                class="specialty-picture"
+              />
+              <h2 class="schedule-heading">Date</h2>
+              <p class="schedule-date">11/5/25</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="schedule-container">
+              <div class="overlay"></div>
+              <img
+                src="../../Assets/Images/Schedule/clock.jpg"
+                alt="Appointment Time"
+                class="specialty-picture"
+              />
+              <h2 class="schedule-heading">Date</h2>
+              <p class="schedule-date">11/5/25</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="schedule-container">
+              <div class="overlay"></div>
+              <img
+                src="../../Assets/Images/Schedule/clock.jpg"
+                alt="Appointment Time"
+                class="specialty-picture"
+              />
+              <h2 class="schedule-heading">Date</h2>
+              <p class="schedule-date">11/5/25</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="schedule-container">
+              <div class="overlay"></div>
+              <img
+                src="../../Assets/Images/Schedule/clock.jpg"
+                alt="Appointment Time"
+                class="specialty-picture"
+              />
+              <h2 class="schedule-heading">Date</h2>
+              <p class="schedule-date">11/5/25</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="schedule-container">
+              <div class="overlay"></div>
+              <img
+                src="../../Assets/Images/Schedule/clock.jpg"
+                alt="Appointment Time"
+                class="specialty-picture"
+              />
+              <h2 class="schedule-heading">Date</h2>
+              <p class="schedule-date">11/5/25</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="schedule-container">
+              <div class="overlay"></div>
+              <img
+                src="../../Assets/Images/Schedule/clock.jpg"
+                alt="Appointment Time"
+                class="specialty-picture"
+              />
+              <h2 class="schedule-heading">Date</h2>
+              <p class="schedule-date">11/5/25</p>
+            </li>
+          </a>
+          <a href="">
+            <li class="schedule-container">
+              <div class="overlay"></div>
+              <img
+                src="../../Assets/Images/Schedule/clock.jpg"
+                alt="Appointment Time"
+                class="specialty-picture"
+              />
+              <h2 class="schedule-heading">Date</h2>
+              <p class="schedule-date">11/5/25</p>
+            </li>
+          </a>
+        </ul>
+      </section>
+      <section id="right-pane">
+        <h2 class="pane-heading">Leading Doctors</h2>
+        <button type="button">
+          <div class="doctor-container">
+            <div class="overlay"></div>
+            <div class="overlay"></div>
+            <img
+              src="../../Assets/Images/Aside Doctors/doctor 1.jpg"
+              alt="Doctor 1"
+              class="doctor-picture"
+            />
+            <div class="doctor-info-container">
+              <h2 class="doctor-name">Dr. Md Shah Newaz</h2>
+              <p class="doctor-specialty">Neurosurgery</p>
+              <p class="doctor-degree">
+                MBBS, BCS (Health), MS (Neurosurgery, BSMMU)
+              </p>
+            </div>
+          </div>
+        </button>
+        <button type="button">
+          <div class="doctor-container">
+            <div class="overlay"></div>
+            <img
+              src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
+              alt="Doctor 2"
+              class="doctor-picture"
+            />
+            <div class="doctor-info-container">
+              <h2 class="doctor-name">Dr. Mohammad Sohel-Uzzaman</h2>
+              <p class="doctor-specialty">Cardiology</p>
+              <p class="doctor-degree">
+                MBBS (SBMC), BCS (Health), FCPS (Surgery), F-MAS, Fellowship in
+                GI Endoscopy (Delhi)
+              </p>
+            </div>
+          </div>
+        </button>
 
-        <input
-          type="submit"
-          name="button-main"
-          id="button-main"
-          value="Reset Password"
-        />
-      </form>
+        <button type="button">
+          <div class="doctor-container">
+            <div class="overlay"></div>
+            <img
+              src="../../Assets/Images/Aside Doctors/doctor 3.jpg"
+              alt="Doctor 3"
+              class="doctor-picture"
+            />
+            <div class="doctor-info-container">
+              <h2 class="doctor-name">Prof. Dr. Md. Merajul Islam (Miraj)</h2>
+              <p class="doctor-specialty">Urology</p>
+              <p class="doctor-degree">
+                MBBS, MCPS (Surgery), MS (Urology), FACS (USA)
+              </p>
+            </div>
+          </div>
+        </button>
+
+        <!-- TODO TODO TODO TODO TODO-->
+        <!-- Add one more doctor card -->
+      </section>
     </main>
 
     <!-------------------------------------------------------------------------------------->
@@ -423,6 +567,6 @@
       </section>
     </footer>
 
-    <script src="../../Controller/Profile Management/update_pass_validation.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

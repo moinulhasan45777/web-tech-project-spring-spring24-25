@@ -5,6 +5,7 @@
     if (isset($_POST['resend-code'])) {
         $info = ['email' => $_SESSION['user_email'], 'name' => $_SESSION['user_name'] ];
         send_mail($info);
+        header("Location: ../../View/User Authentication/verify_email.php");
     }
 
     if(isset($_POST['button-main'])) {

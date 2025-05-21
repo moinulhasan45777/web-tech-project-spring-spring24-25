@@ -1,10 +1,11 @@
 <?php
   session_start();
   if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
-    header('Location: ../../View/User Authentication/login.html');
+    header('Location: forgot_pass.html');
     exit;
   }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,49 +48,81 @@
     <!------------------------------------ MAIN SECTION ------------------------------------>
     <!-------------------------------------------------------------------------------------->
 
-    <main id="update-pass-main">
-      <img
-        id="update-pass-logo"
-        src="../../Assets/Logo/main-logo-without-text.png"
-      />
-      <form id="user-auth" method="post" action="../../Controller/Profile Management/process_update_pass.php" enctype="multipart/form-data"" novalidate>
-        <div class="input-container">
-          <label for="user-pass">Current Password</label>
+    <main id="edit-profile-main">
+      <h1 id="heading">Edit Profile</h1>
+      <form
+        id="edit-profile-form"
+        method="post"
+        action="../../Controller/Doctor Profiles/process_edit_doctor_profile.php"
+        enctype="multipart/form-data"
+        novalidate
+      >
+        <div class="input-container pro-pic-container">
+          <label>Profile Picture</label>
+          <img
+            id="profile-picture"
+            src="../../Assets/Images/Doctors/doctor 2.jpg"
+            alt="Profile Picture"
+          />
+          <!-- <input
+            type="file"
+            class="change-avatar-input"
+            name="change-avatar-input"
+            id="change-avatar-input"
+          />
           <input
-            type="password"
-            id="current-pass"
+            type="button"
+            id="change-avatar"
+            class="small-button"
+            value="Upload"
+          /> -->
+        </div>
+        <div class="input-container">
+          <label for="consultation-fee">Consultation Fee</label>
+          <input
+            type="text"
             class="text-field"
-            name="current-pass"
-            placeholder="**********"
+            id="consultation-fee"
+            name="consultation-fee"
           />
         </div>
         <div class="input-container">
-          <label for="user-pass">New password</label>
+          <label for="start-time-hour">Start Time (Hour:)</label>
           <input
-            type="password"
-            id="new-pass"
+            type="text"
             class="text-field"
-            name=" new-pass"
-            placeholder="**********"
+            id="start-time-hour"
+            name="start-time-hour"
           />
         </div>
         <div class="input-container">
-          <label for="user-pass">Confirm new password</label>
+          <label for="start-time-minute">Start Time (Minute:)</label>
           <input
-            type="password"
-            id="user-pass-confirm"
+            type="text"
             class="text-field"
-            name="user-pass-confirm"
-            placeholder="**********"
+            id="start-time-minute"
+            name="start-time-minute"
           />
         </div>
-
-        <input
-          type="submit"
-          name="button-main"
-          id="button-main"
-          value="Reset Password"
-        />
+        <div class="input-container">
+          <label for="end-time-hour">End Time (Hour:)</label>
+          <input
+            type="text"
+            class="text-field"
+            id="end-time-hour"
+            name="end-time-hour"
+          />
+        </div>
+        <div class="input-container">
+          <label for="end-time-minute">End Time (Minute:)</label>
+          <input
+            type="text"
+            class="text-field"
+            id="end-time-minute"
+            name="end-time-minute"
+          />
+        </div>
+        <input type="submit" name="button-main" id="button-main" value="Save" />
       </form>
     </main>
 
@@ -423,6 +456,7 @@
       </section>
     </footer>
 
-    <script src="../../Controller/Profile Management/update_pass_validation.js"></script>
+    <script src="../../Controller/Doctor Profiles/edit_doctor_profile_validation.js"></script>
   </body>
 </html>
+a

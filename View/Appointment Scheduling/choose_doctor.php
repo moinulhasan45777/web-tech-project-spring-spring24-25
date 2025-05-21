@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
+    header('Location: ../../View/User Authentication/login.html');
+    exit;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,7 +33,7 @@
             <li><a href="#">About</a></li>
             <li class="active"><a href="#">Book Appointment</a></li>
           </ul>
-          <a href="../Profile Management/view_profile.html"
+          <a href="../Profile Management/view_profile.php"
             ><img id="pro-pic" src="../../Assets/Images/sample-pro-pic.JPG"
           /></a>
         </div>
@@ -46,11 +54,11 @@
       <section id="main-pane-doctor">
         <input type="text" id="search-bar" placeholder="Search Doctors" />
         <ul id="doctor-list">
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -65,11 +73,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -84,11 +92,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -103,11 +111,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -122,11 +130,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -141,11 +149,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -160,11 +168,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -179,11 +187,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -198,11 +206,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -217,11 +225,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -236,11 +244,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -255,11 +263,11 @@
               </div>
             </li>
           </a>
-          <a href="select_schedule.html">
+          <a href="select_schedule.php">
             <li class="main-doctor-container">
               <div class="overlay"></div>
               <img
-                src="Images/Aside Doctors/doctor 2.jpg"
+                src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
                 alt="Doctor 2"
                 class="doctor-picture"
               />
@@ -283,7 +291,7 @@
             <div class="overlay"></div>
             <div class="overlay"></div>
             <img
-              src="Images/Aside Doctors/doctor 1.jpg"
+              src="../../Assets/Images/Aside Doctors/doctor 1.jpg"
               alt="Doctor 1"
               class="doctor-picture"
             />
@@ -300,7 +308,7 @@
           <div class="doctor-container">
             <div class="overlay"></div>
             <img
-              src="Images/Aside Doctors/doctor 2.jpg"
+              src="../../Assets/Images/Aside Doctors/doctor 2.jpg"
               alt="Doctor 2"
               class="doctor-picture"
             />
@@ -319,7 +327,7 @@
           <div class="doctor-container">
             <div class="overlay"></div>
             <img
-              src="Images/Aside Doctors/doctor 3.jpg"
+              src="../../Assets/Images/Aside Doctors/doctor 3.jpg"
               alt="Doctor 3"
               class="doctor-picture"
             />

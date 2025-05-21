@@ -33,7 +33,7 @@
             <li><a href="../Doctor Profiles/doctors_list.html">Doctors</a></li>
             <li><a href="#">About</a></li>
             <li>
-              <a href="../Appointment Scheduling/select_specialty.html"
+              <a href="../Appointment Scheduling/select_specialty.php"
                 >Book Appointment</a
               >
             </li>

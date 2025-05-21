@@ -1,7 +1,7 @@
 <?php
 
   session_start();
-  if(!isset($_SESSION['user_email'])){
+  if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
     header('Location: forgot_pass.html');
     exit;
   }
@@ -33,12 +33,12 @@
             <li><a href="../Doctor Profiles/doctors_list.html">Doctors</a></li>
             <li><a href="#">About</a></li>
             <li>
-              <a href="../Appointment Scheduling/select_specialty.html"
+              <a href="../Appointment Scheduling/select_specialty.php"
                 >Book Appointment</a
               >
             </li>
           </ul>
-          <a href="../Profile Management/view_profile.html"
+          <a href="../Profile Management/view_profile.php"
             ><img id="pro-pic" src="../../Assets/Images/sample-pro-pic.JPG"
           /></a>
         </div>
@@ -153,7 +153,7 @@
             src="../../Assets/Images/Profile Management/Sample Signature.png"
             alt="Digital Signature"
           />
-          <a class="small-button" href="change_signature.html">Change</a>
+          <a class="small-button" href="change_signature.php">Change</a>
         </div>
         <div class="input-container">
           <label for="user-em-name">Emergency Contact Name</label>

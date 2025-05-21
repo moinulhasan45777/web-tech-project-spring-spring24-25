@@ -14,6 +14,7 @@ const proPicture = document.getElementById("profile-picture");
 const changeAvatarButton = document.getElementById("change-avatar");
 const changeAvatarInput = document.getElementById("change-avatar-input");
 
+const allowedPictureExtensions = [".png", ".jpg", "jpeg"];
 // ---------------------------------------------------------
 // ----------------Realtime Input Validation----------------
 // ---------------------------------------------------------
@@ -312,63 +313,24 @@ changeAvatarInput.addEventListener("change", function () {
   reader.readAsDataURL(file);
 });
 
-// On Submit Input Validation not Required
 // // ---------------------------------------------------------
 // // ----------------On Submit Input Validation---------------
 // // ---------------------------------------------------------
 
-// submitButton.addEventListener("click", function (e) {
-//   e.preventDefault();
+submitButton.addEventListener("click", function (e) {
+  e.preventDefault();
 
-//   if (fullName.value.trim() == "") {
-//     alert("Please enter the name");
-//     fullName.focus();
-//     return;
-//   }
+  if (
+    !allowedPictureExtensions.includes(
+      changeAvatarInput.files[0].name.slice(-4)
+    )
+  ) {
+    alert("Please upload a valid Profile Picture");
+    changeAvatarButton.focus();
+    return;
+  }
 
-//   if (bloodGroup.value == "") {
-//     alert("Please select a blood group.");
-//     bloodGroup.focus();
-//     return;
-//   }
+  // TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
 
-//   if (dob.value == "") {
-//     alert("Please select a date of birth.");
-//     dob.focus();
-//     return;
-//   }
-
-//   // Formatting Date of Birth
-//   const dobDate = dob.value.split("-");
-
-//   if (presentAddress.value.length < 5) {
-//     alert("Please enter a valid address.");
-//     presentAddress.focus();
-//     return;
-//   }
-
-//   if (city.value.length < 3) {
-//     alert("Please enter a valid city name.");
-//     city.focus();
-//     return;
-//   }
-
-//   if (emName.value.length < 3) {
-//     alert("Please enter a valid emergency contact name.");
-//     emName.focus();
-//     return;
-//   }
-
-//   if (emRelation.value.length < 3) {
-//     alert("Please enter a valid emergency contact relation.");
-//     emRelation.focus();
-//     return;
-//   }
-
-//   if (emPhone.value.length != 11 && emPhone.value.length != 14) {
-//     alert("Please enter a valid emergency contact number.");
-//     emPhone.focus();
-//     return;
-//   }
-//   form.submit();
-// });
+  form.requestSubmit(submitButton);
+});

@@ -225,7 +225,7 @@ submitButton.addEventListener("click", function (e) {
     changeAvatarButton.focus();
     return;
   }
-  console.log(changeAvatarInput.files[0].name.slice(-4));
+
   if (
     !allowedPictureExtensions.includes(
       changeAvatarInput.files[0].name.slice(-4)

@@ -1,19 +1,26 @@
-<?
+<?php
   require_once("../../Model/user_model.php");
 
+  
+
   if(isset($_POST['button-main'])){
-
-    // Password Hashing
-    $hash = password_hash($_POST['user-pass'], PASSWORD_ARGON2ID, [
-      'memory_cost' => 1 << 17,
-      'time_cost' => 4,
-      'threads' => 2
-    ]);
-    $user = ['email' => $_POST['user-email'], 'pass' => $hash];
-
+    $user = ['email' => trim($_POST['user-email']), 'pass' => $_POST['user-pass']];
     if(login($user)){
-      echo "<script>alert('HAHA');</script>"; //TODO
-      exit;
+      if(isset($_POST['remember-me'])){
+        setcookie('login_email', $user['email'], time() + (10 * 365 * 24 * 60 * 60), '/');
+        $_SESSION['login_email'] = $user['email'];
+        echo "<script>alert('Login Successful');
+          window.location.href = '../../View/Landing Page/index.html';
+          </script>";
+          exit;
+      }else{
+        setcookie('login_email', $user['email'], time() + (3600), '/');
+        $_SESSION['login_email'] = $user['email'];
+        echo "<script>alert('Login Successful');
+          window.location.href = '../../View/Landing Page/index.html';
+          </script>";
+          exit;
+      }
     } else{
       echo "<script>alert('Wrong Username or Password');
           window.location.href = '../../View/User Authentication/login.html';
@@ -22,3 +29,7 @@
     }
   }
 ?>
+
+
+
+
