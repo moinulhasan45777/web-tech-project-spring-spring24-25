@@ -50,7 +50,7 @@
       <div id="invoice-heading-container">
         <div id="company-info-container">
           <img
-            src="../Logo/main-logo-without-text.png"
+            src="../../Assets/Logo/main-logo-without-text.png"
             alt="Logo"
             id="company-logo" />
           <p id="company-address">

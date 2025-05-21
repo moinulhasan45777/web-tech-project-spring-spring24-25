@@ -64,7 +64,6 @@
         $row = mysqli_fetch_assoc($result);
         return $row['user_id'];
     }
-
     function addPatient($patient){
         $con = getConnection();
         $sql = "insert into patients values(null, '{$patient['name']}', '{$patient['dob']}', '{$patient['phone']}',
