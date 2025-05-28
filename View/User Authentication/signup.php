@@ -1,10 +1,10 @@
 <?php
-
   session_start();
   // Setting previous values
   $name = $_SESSION['user_name'] ?? '';
   $phone = $_SESSION['user_phone'] ?? '';
   $email = $_SESSION['user_email'] ?? '';
+  session_destroy();
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
               >
             </li>
             <li id="login" class="active">
-              <a href="../User Authentication/login.html">Sign in</a>
+              <a href="../User Authentication/login.php">Sign in</a>
             </li>
           </ul>
         </div>

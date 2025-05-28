@@ -1,7 +1,7 @@
 <?php
   session_start();
   if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
-    header('Location: ../User Authentication/login.html');
+    header('Location: ../User Authentication/login.php');
     exit;
   }
 ?>
@@ -23,24 +23,6 @@
     <!-------------------------------------- GENERAL --------------------------------------->
     <!-------------------------------------------------------------------------------------->
     <header>
-      <nav>
-        <img src="../../Assets/Logo/nav-logo.png" alt="logo" id="logo" />
-        <div id="nav-link-container">
-          <ul id="nav-list">
-            <li><a href="../Landing Page/index.html">Home</a></li>
-            <li><a href="../Doctor Profiles/doctors_list.html">Doctors</a></li>
-            <li><a href="#">About</a></li>
-            <li>
-              <a href="../Appointment Scheduling/select_specialty.php"
-                >Book Appointment</a
-              >
-            </li>
-          </ul>
-          <a href="../Profile Management/view_profile.php"
-            ><img id="pro-pic" src="../../Assets/Images/sample-pro-pic.JPG"
-          /></a>
-        </div>
-      </nav>
     </header>
 
     <!-------------------------------------------------------------------------------------->
@@ -136,7 +118,7 @@
           </p>
         </div>
         <a href="../Basic Billing/charge_capture.php" class="link-button">Pay Bill</a>
-        <a href="../Staff Management/staff_list.php" class="link-button">Manage Staff</a>
+        <a href="../Staff Management/staff_list.php" class="link-button" id="manage-staff">Manage Staff</a>
         <a href="edit_profile.php" class="link-button">Edit</a>
         <button type="submit" id="logout-button" name="logout-button" class="link-button">Logout</button>
       </div>

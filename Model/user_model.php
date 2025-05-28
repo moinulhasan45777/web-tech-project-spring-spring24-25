@@ -64,6 +64,22 @@
         $row = mysqli_fetch_assoc($result);
         return $row['user_id'];
     }
+
+    function retrieveProPic($userID){
+        $con = getConnection();
+        $sql = "select profile_picture from patients where user_id='{$userID}'";
+        $result = mysqli_query( $con, $sql);
+        $row = mysqli_fetch_assoc($result);
+        return $row['profile_picture'];
+    }
+
+    function retrieveRole($email){
+        $con = getConnection();
+        $sql = "select role from users where email='{$email}'";
+        $result = mysqli_query( $con, $sql);
+        $row = mysqli_fetch_assoc($result);
+        return $row['role'];
+    }
     function addPatient($patient){
         $con = getConnection();
         $sql = "insert into patients values(null, '{$patient['name']}', '{$patient['dob']}', '{$patient['phone']}',

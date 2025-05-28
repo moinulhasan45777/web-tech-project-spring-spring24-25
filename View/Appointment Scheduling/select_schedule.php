@@ -1,7 +1,7 @@
 <?php
   session_start();
   if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
-    header('Location: ../../View/User Authentication/login.html');
+    header('Location: ../../View/User Authentication/login.php');
     exit;
   }
 ?>
@@ -567,6 +567,6 @@
       </section>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../../Controller/Appointment Scheduling/select_schedule_validation.js"></script>
   </body>
 </html>

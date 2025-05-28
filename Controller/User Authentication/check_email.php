@@ -149,15 +149,9 @@
     $src = $_FILES['change-avatar-input']['tmp_name'];
     $des = "../../Assets/Uploads/Profile Pictures/" . $_POST['user-email'] . '.' . pathinfo($_FILES['change-avatar-input']['name'], PATHINFO_EXTENSION);
 
-    if(move_uploaded_file($src, $des)){
-      $_SESSION['user_profile_picture'] = $_POST['user-email'] . '.' . pathinfo($_FILES['change-avatar-input']['name'], PATHINFO_EXTENSION);
-    }else{
-      echo "<script>alert('An Error Occurred!');
-          window.location.href = '../../View/User Authentication/signup.php';
-          </script>";
-          exit;
-    }
-
+    $_SESSION['user_profile_picture'] = $_POST['user-email'] . '.' . pathinfo($_FILES['change-avatar-input']['name'], PATHINFO_EXTENSION);
+    $_SESSION['user_profile_picture_src'] = $src;
+    $_SESSION['user_profile_picture_des'] = $des; 
 
     // Digital Signature
     $uploadDir = '../../Assets/Uploads/Digital Signatures/';
@@ -166,18 +160,12 @@
 	  $img = str_replace(' ', '+', $img);
 	  $data = base64_decode($img);
 	  $file = $uploadDir . $_POST['user-email'] . '.png';
-	  if(file_put_contents($file, $data)){
-      $_SESSION['user_digital_signature'] = $_POST['user-email'] . '.png';
-    }else{
-      echo "<script>alert('An Error Occurred!');
-          window.location.href = '../../View/User Authentication/signup.php';
-          </script>";
-          exit;
-    }
-        
-        
+    $_SESSION['user_digital_signature'] = $_POST['user-email'] . '.png';
+    $_SESSION['user_digital_signature_src'] = $file;
+    $_SESSION['user_digital_signature_des'] = $data;
     
     if(checkExistingUser($_POST['user-email'])) {
+      session_destroy();
       echo "<script>alert('Email already exists');
       window.location.href = '../../View/User Authentication/signup.php';
       </script>";
@@ -194,5 +182,10 @@
           exit;
     }
     exit;
-  } 
+  } else{
+    echo "<script>alert('Invalid Request!');
+          window.location.href = '../../View/Landing Page/index.html';
+          </script>";
+          exit;
+  }
 ?>

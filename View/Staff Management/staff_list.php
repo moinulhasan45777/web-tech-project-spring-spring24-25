@@ -1,10 +1,19 @@
 <?php
   session_start();
   if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
-    header('Location: ../User Authentication/login.html');
+    if(isset($_SESSION['login_email'])){
+      if($_SESSION['login_role'] != 'admin'){
+        header('Location: ../User Authentication/login.php');
+      }
+    } 
+    else if($_COOKIE['login_role'] != 'admin'){
+      header('Location: ../User Authentication/login.php');
+    }
+    header('Location: ../User Authentication/login.php');
     exit;
   }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,7 +64,7 @@
         <div class="search-and-filter-container">
           <input type="text" id="search-bar" placeholder="Search Staff" />
           <select id="select-specialty-dropdown">
-            <option value="Cardiology">All</option>
+            <option value="all">All</option>
             <option value="Cardiology">Cardiology</option>
             <option value="Hematology">Hematology</option>
             <option value="Gastroenterology">Gastroenterology</option>
@@ -68,22 +77,6 @@
           </select>
         </div>
         <ul id="staff-list">
-          <a href="staff_profile.php">
-            <li class="main-staff-container">
-              <div class="overlay"></div>
-              <img
-                src="../../Assets/Images/Staffs/Nurse/nurse 1.jpg"
-                alt="Staff 2"
-                class="staff-picture"
-              />
-              <div class="staff-info-container">
-                <h2 class="staff-name">Sulekha Jaman</h2>
-                <p class="staff-department">Cardiology</p>
-                <p class="staff-schedule">Schedule: Morning</p>
-                <p class="staff-designation">Nurse</p>
-              </div>
-            </li>
-          </a>
         </ul>
       </section>
       <section id="right-pane">

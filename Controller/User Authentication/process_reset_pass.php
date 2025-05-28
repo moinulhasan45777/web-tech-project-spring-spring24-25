@@ -65,7 +65,7 @@
       session_destroy();
 
       echo "<script>alert('Password successfully changed! Please Sign in using the new password!');
-          window.location.href = '../../View/User Authentication/login.html';
+          window.location.href = '../../View/User Authentication/login.php';
           </script>";
           exit;
     }else{
@@ -74,6 +74,12 @@
           </script>";
           exit;
     }
+  } else{
+    echo "<script>alert('Invalid Request!');
+          window.location.href = '../../View/Landing Page/index.html';
+          </script>";
+          exit;
   }
   
+
 ?>

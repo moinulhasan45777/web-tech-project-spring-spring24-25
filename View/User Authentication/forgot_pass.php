@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(isset($_SESSION['login_email']) || isset($_COOKIE['login_email'])){
+    header('Location: ../Profile Management/view_profile.php');
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +15,7 @@
       rel="stylesheet"
       href="../../Assets/User Authentication/user_authentication.css"
     />
-
+    
     <title>HMC - Your most reliable companion</title>
   </head>
   <body>

@@ -21,5 +21,10 @@
 
     header("Location: ../../View/Basic Billing/final_bill.php");
     exit;
+  }else{
+    echo "<script>alert('Invalid Request!');
+          window.location.href = '../../View/Landing Page/index.html';
+          </script>";
+          exit;
   }
 ?>

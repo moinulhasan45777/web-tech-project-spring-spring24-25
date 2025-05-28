@@ -8,5 +8,10 @@
             </script>";
             exit;
     }
+  }else{
+    echo "<script>alert('Invalid Request!');
+          window.location.href = '../../View/Landing Page/index.html';
+          </script>";
+          exit;
   }
 ?>

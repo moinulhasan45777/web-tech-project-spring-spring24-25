@@ -14,7 +14,7 @@
           window.location.href = '../../View/User Authentication/verify_email.php';
           </script>";
           exit;
-      }
+    }
 
       if($_POST['otp'] == $_SESSION['otp']){
         header("Location: ../../View/User Authentication/detailed_signup.php");
@@ -24,5 +24,10 @@
           </script>";
           exit;
       }
+    } else{
+      echo "<script>alert('Invalid Request');
+          window.location.href = '../../View/Landing Page/index.html';
+          </script>";
+          exit;
     }
 ?>

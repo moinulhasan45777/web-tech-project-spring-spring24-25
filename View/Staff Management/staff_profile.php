@@ -1,7 +1,15 @@
 <?php
   session_start();
   if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
-    header('Location: ../User Authentication/login.html');
+    if(isset($_SESSION['login_email'])){
+      if($_SESSION['login_role'] != 'admin'){
+        header('Location: ../User Authentication/login.php');
+      }
+    } 
+    else if($_COOKIE['login_role'] != 'admin'){
+      header('Location: ../User Authentication/login.php');
+    }
+    header('Location: ../User Authentication/login.php');
     exit;
   }
 ?>
@@ -94,7 +102,6 @@
           <p class="info-field" id="staff-schedule" name="staff-schedule">
             Morning
           </p>
-          <a class="small-button update-button" href="">Change</a>
         </div>
 
         <div class="input-container-view">
@@ -162,7 +169,6 @@
             +8801715475440
           </p>
         </div>
-        <a href="staff_profile.php" class="link-button">Save</a>
       </div>
     </main>
 

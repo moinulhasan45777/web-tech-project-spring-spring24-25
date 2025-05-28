@@ -1,7 +1,7 @@
 <?php
   session_start();
   if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
-    header('Location: login.html');
+    header('Location: login.php');
     exit;
   }
 ?>
@@ -480,6 +480,6 @@
       </section>
     </footer>
 
-    <script src="Scripts/reset_pass_validation.js"></script>
+    <script src="../../Controller/Basic Billing/final_bill_validation.js"></script>
   </body>
 </html>

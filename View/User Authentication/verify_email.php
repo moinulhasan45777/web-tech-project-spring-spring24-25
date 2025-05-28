@@ -1,8 +1,7 @@
 <?php
-
   session_start();
   if(!isset($_SESSION['user_email'])){
-    header('Location: login.html');
+    header('Location: login.php');
     exit;
   }
 ?>
@@ -38,7 +37,7 @@
               >
             </li>
             <li id="login" class="active">
-              <a href="../User Authentication/login.html">Sign in</a>
+              <a href="../User Authentication/login.php">Sign in</a>
             </li>
           </ul>
         </div>

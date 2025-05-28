@@ -1,8 +1,7 @@
 <?php
-
   session_start();
   if(!isset($_SESSION['login_email']) && !isset($_COOKIE['login_email'])){
-    header('Location: ../../View/User Authentication/login.html');
+    header('Location: ../../View/User Authentication/login.php');
     exit;
   }
 ?>

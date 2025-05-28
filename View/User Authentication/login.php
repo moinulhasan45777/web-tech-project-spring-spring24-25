@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(isset($_SESSION['login_email']) || isset($_COOKIE['login_email'])){
+    header('Location: ../Landing Page/index.html');
+    exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +36,7 @@
               >
             </li>
             <li id="login" class="active">
-              <a href="../User Authentication/login.html">Sign in</a>
+              <a href="../User Authentication/login.php">Sign in</a>
             </li>
           </ul>
         </div>
@@ -62,7 +69,7 @@
         <div class="input-container">
           <div id="label-container">
             <label for="user-pass">Password</label>
-            <a href="forgot_pass.html">Forgot Password</a>
+            <a href="forgot_pass.php">Forgot Password</a>
           </div>
 
           <input

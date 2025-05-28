@@ -143,15 +143,39 @@
                             'previousDrug' => $_SESSION['user_previous_drug'],
                             'weeklyActivity' => $_SESSION['user_weekly_activity_level'],
                             'user_id' => $_SESSION['user_id']];
-      
-      if(addMedicalHistory($userMedicalHistory)){
-        echo "<script>alert('Signup Successful. Please use the email and password to login!');
-          window.location.href = '../../View/User Authentication/login.html';
+           
+      if(move_uploaded_file($_SESSION['user_profile_picture_src'], $_SESSION['user_profile_picture_des'])){
+        if(file_put_contents($_SESSION['user_digital_signature_src'], $_SESSION['user_digital_signature_des'])){
+          if(addMedicalHistory($userMedicalHistory)){
+            session_destroy();
+            echo "<script>alert('Signup Successful. Please use the email and password to login!');
+            window.location.href = '../../View/User Authentication/login.php';
+            </script>";
+            exit;
+          }
+          else{
+            echo "<script>alert('An Error Occurred!');
+            window.location.href = '../../View/User Authentication/signup.php';
+            </script>";
+            exit;
+          }
+        }else{
+          echo "<script>alert('An Error Occurred!');
+          window.location.href = '../../View/User Authentication/signup.php';
+          </script>";
+          exit;
+        }
+      }
+      else{
+          echo "<script>alert('An Error Occurred!');
+          window.location.href = '../../View/User Authentication/signup.php';
           </script>";
           exit;
       }
-      else{
-
-      }
+  } else{
+    echo "<script>alert('Invalid Request!');
+          window.location.href = '../../View/Landing Page/index.html';
+          </script>";
+          exit;
   }
 ?>

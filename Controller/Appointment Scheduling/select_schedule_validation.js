@@ -29,7 +29,7 @@ window.onload = function () {
               >
             </li>
             <li id="login">
-              <a href="../User Authentication/login.php">Sign in</a>
+              <a href="../User Authentication/login.html">Sign in</a>
             </li>
           </ul>
         </div>
