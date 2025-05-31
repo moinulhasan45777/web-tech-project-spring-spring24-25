@@ -1,4 +1,5 @@
 const logout = document.getElementById("logout-button");
+const viewProfile = document.getElementById("view-profile-main");
 
 logout.addEventListener("click", function () {
   window.location.href = "../../Controller/Profile Management/logout.php";
@@ -41,6 +42,116 @@ window.onload = function () {
       </nav>`;
     }
   };
+
+  let xhttp3 = new XMLHttpRequest();
+  xhttp3.open(
+    "post",
+    "../../Controller/Profile Management/process_view_profile.php",
+    true
+  );
+  xhttp3.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp3.send();
+  xhttp3.onreadystatechange = function () {
+    if (xhttp3.readyState == 4 && xhttp3.status == 200) {
+      viewProfile.innerHTML = "";
+      let user = JSON.parse(this.responseText);
+
+      viewProfile.innerHTML = `
+      <h1 id="heading">Profile</h1>
+      <div id="info-container-view">
+        <div class="input-container pro-pic-container">
+          <label class="info-label">Profile Picture</label>
+          <img
+            id="profile-picture"
+            src="../../Assets/Uploads/Profile Pictures/${user.profile_picture}"
+            alt="Profile Picture"
+          />
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-name">Name: </label>
+          <p class="info-field" id="user-name" name="user-name">${user.name}</p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-phone">Mobile: </label>
+          <p class="info-field" id="user-phone" name="user-phone">
+            ${user.phone}
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-email">Email: </label>
+          <p class="info-field" id="user-email" name="user-email">
+            ${user.email}
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-pass">Password: </label>
+          <p class="info-field" id="user-pass" name="user-pass">
+            **************
+          </p>
+          <a class="small-button update-button" href="update_pass.php"
+            >Update</a
+          >
+        </div>
+        <div class="input-container pro-pic-container">
+          <label class="info-label">Digital Signature:</label>
+          <img
+            id="digital-signature"
+            src="../../Assets/Uploads/Digital Signatures/${user.digital_signature}"
+            alt="Digital Signature"
+          />
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-blood-group">Blood Group: </label>
+          <p class="info-field" id="user-blood-group" name="user-blood-group">
+            ${user.blood_group}
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-dob">Date of Birth:</label>
+          <p class="info-field" id="user-dob" name="user-dob">${user.dob}</p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-address">Present Address:</label>
+          <p id="user-address" class="info-field" name="user-address">
+            ${user.address}
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-city">City:</label>
+          <p class="info-field" id="user-city" name="user-city">${user.city}</p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-em-name"
+            >Emergency Contact Name:</label
+          >
+          <p class="info-field" id="user-em-name" name="user-em-name">
+            ${user.em_name}
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-em-relation"
+            >Emergency Contact Relation:</label
+          >
+          <p class="info-field" id="user-em-relation" name="user-em-relation">
+            ${user.em_relation}
+          </p>
+        </div>
+        <div class="input-container-view">
+          <label class="info-label" for="user-em-phone"
+            >Emergency Contact Number:</label
+          >
+          <p class="info-field" id="user-em-phone" name="user-em-phone">
+            ${user.em_phone}
+          </p>
+        </div>
+        <a href="../Basic Billing/charge_capture.php" class="link-button">Pay Bill</a>
+        <a href="../Staff Management/staff_list.php" class="link-button" id="manage-staff">Manage Staff</a>
+        <a href="edit_profile.php" class="link-button">Edit</a>
+        <button type="submit" id="logout-button" name="logout-button" class="link-button">Logout</button>
+      </div>`;
+    }
+  };
+
   xhttp2 = new XMLHttpRequest();
   const manageStaff = document.getElementById("manage-staff");
   // Getting Role and Vanishing Edit Profile if Necessary

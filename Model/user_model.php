@@ -113,16 +113,19 @@
         }
     }
 
-    // function getUserById($id){
-
-    // }
-
-    // function addUser($user){
-
-    // }
-
-    // function deleteUser($id){
-
-    // }
-
+    function getUserInfo($id, $role){
+        $con = getConnection();
+        $sql = "";
+        if($role == 'patient'){
+            $sql = "SELECT patients.*, users.email FROM patients JOIN users ON users.user_id = patients.user_id WHERE patients.user_id = {$id}";
+        }
+        else if($role == 'staff'){
+            $sql = "select staffs.*, users.email from patients JOIN patients on users.user_id = patients.user_id where patients.user_id = {$id}";
+        } else if($role == 'receptionist'){
+            $sql = "select receptionists.*, users.email from patients JOIN patients on users.user_id = patients.user_id where patients.user_id = {$id}";
+        }
+        $result = mysqli_query( $con, $sql);
+        $row = mysqli_fetch_assoc($result);
+        return $row;
+    }
 ?> 
