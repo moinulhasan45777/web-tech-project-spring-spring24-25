@@ -117,7 +117,7 @@
         $con = getConnection();
         $sql = "";
         if($role == 'patient'){
-            $sql = "SELECT patients.*, users.email FROM patients JOIN users ON users.user_id = patients.user_id WHERE patients.user_id = {$id}";
+            $sql = "SELECT patients.*, users.email, users.role FROM patients JOIN users ON users.user_id = patients.user_id WHERE patients.user_id = {$id}";
         }
         else if($role == 'staff'){
             $sql = "select staffs.*, users.email from patients JOIN patients on users.user_id = patients.user_id where patients.user_id = {$id}";

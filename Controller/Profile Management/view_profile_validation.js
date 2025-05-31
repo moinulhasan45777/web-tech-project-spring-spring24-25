@@ -53,10 +53,11 @@ window.onload = function () {
   xhttp3.send();
   xhttp3.onreadystatechange = function () {
     if (xhttp3.readyState == 4 && xhttp3.status == 200) {
-      viewProfile.innerHTML = "";
       let user = JSON.parse(this.responseText);
-
-      viewProfile.innerHTML = `
+      if (user.role == "patient") {
+        let date = user.dob.split("-");
+        let convertedDate = date[2] + "/" + date[1] + "/" + date[0];
+        viewProfile.innerHTML = `
       <h1 id="heading">Profile</h1>
       <div id="info-container-view">
         <div class="input-container pro-pic-container">
@@ -108,7 +109,7 @@ window.onload = function () {
         </div>
         <div class="input-container-view">
           <label class="info-label" for="user-dob">Date of Birth:</label>
-          <p class="info-field" id="user-dob" name="user-dob">${user.dob}</p>
+          <p class="info-field" id="user-dob" name="user-dob">${convertedDate}</p>
         </div>
         <div class="input-container-view">
           <label class="info-label" for="user-address">Present Address:</label>
@@ -145,10 +146,10 @@ window.onload = function () {
           </p>
         </div>
         <a href="../Basic Billing/charge_capture.php" class="link-button">Pay Bill</a>
-        <a href="../Staff Management/staff_list.php" class="link-button" id="manage-staff">Manage Staff</a>
         <a href="edit_profile.php" class="link-button">Edit</a>
         <button type="submit" id="logout-button" name="logout-button" class="link-button">Logout</button>
       </div>`;
+      }
     }
   };
 
