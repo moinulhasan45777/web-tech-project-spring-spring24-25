@@ -1,9 +1,4 @@
-const logout = document.getElementById("logout-button");
 const viewProfile = document.getElementById("view-profile-main");
-
-logout.addEventListener("click", function () {
-  window.location.href = "../../Controller/Profile Management/logout.php";
-});
 
 const header = document.getElementsByTagName("header");
 
@@ -147,7 +142,7 @@ window.onload = function () {
         </div>
         <a href="../Basic Billing/charge_capture.php" class="link-button">Pay Bill</a>
         <a href="edit_profile.php" class="link-button">Edit</a>
-        <button type="submit" id="logout-button" name="logout-button" class="link-button">Logout</button>
+        <a href="../../Controller/Profile Management/logout.php" class="link-button">Logout</a>
       </div>`;
       }
     }

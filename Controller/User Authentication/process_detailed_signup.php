@@ -3,7 +3,6 @@
 
   if (isset($_SESSION["user-email"])){
     if(isset($_POST['button-main'])) {
-
       $bg = $_POST['user-blood-group'];
       $dob = $_POST['user-dob'];
       $address = trim($_POST['user-address']);
